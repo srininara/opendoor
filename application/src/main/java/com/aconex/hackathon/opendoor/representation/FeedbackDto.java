@@ -2,6 +2,7 @@ package com.aconex.hackathon.opendoor.representation;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
@@ -10,15 +11,18 @@ public class FeedbackDto {
     private UUID id;
     private Integer bliss;
     private String respondent;
+    private Timestamp createdAt;
 
     public FeedbackDto() {
     }
 
-    public FeedbackDto(String message, UUID id, Integer bliss, String respondent) {
+    public FeedbackDto(String message, UUID id, Integer bliss, String respondent, Timestamp createdAt) {
         this.message = message;
         this.id = id;
         this.bliss = bliss;
         this.respondent = respondent;
+        this.createdAt = createdAt;
+
     }
 
     public String getMessage() {
@@ -37,6 +41,10 @@ public class FeedbackDto {
         return respondent;
     }
 
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
     @Override
     public String toString() {
         return "FeedbackDto{" +
@@ -44,6 +52,8 @@ public class FeedbackDto {
                 ", id=" + id +
                 ", bliss=" + bliss +
                 ", respondent='" + respondent + '\'' +
+                ", createdAt=" + createdAt +
                 '}';
     }
+
 }

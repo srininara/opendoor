@@ -25,6 +25,7 @@ public class FeedbackController {
         this.feedbackService = feedbackService;
     }
 
+
     @PostMapping(produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     public FeedbackDto save(@RequestBody FeedbackDto feedbackDto) {
         logger.info(feedbackDto.toString());

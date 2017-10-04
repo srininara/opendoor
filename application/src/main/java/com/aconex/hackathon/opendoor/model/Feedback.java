@@ -1,9 +1,8 @@
 package com.aconex.hackathon.opendoor.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @Entity
@@ -18,6 +17,8 @@ public class Feedback {
 
     private String respondent;
 
+    private Timestamp createdAt;
+
     public Feedback() {
     }
 
@@ -30,6 +31,7 @@ public class Feedback {
         this.bliss = bliss;
         this.respondent = respondent;
         this.id = UUID.randomUUID();
+        this.createdAt = new Timestamp(System.currentTimeMillis());
     }
 
     public UUID getId() {
@@ -46,5 +48,9 @@ public class Feedback {
 
     public String getRespondent() {
         return respondent;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 }

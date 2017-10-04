@@ -9,6 +9,6 @@ public final class ObjectConverter {
     }
 
     public  static FeedbackDto dto(Feedback feedback) {
-      return new FeedbackDto(feedback.getMessage(), feedback.getId(), feedback.getBliss(), feedback.getRespondent());
+      return new FeedbackDto(feedback.getMessage(), feedback.getId(), feedback.getBliss(), feedback.getRespondent(), feedback.getCreatedAt());
     }
 }
