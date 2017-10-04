@@ -43,3 +43,14 @@ task stopApp(type: Exec) {
     workingDir ".."
     commandLine 'docker-compose', '-f', 'docker-compose-local.yml', 'down', '--rmi', 'local'
 }
+
+task startIntegrationDatabase(type: Exec) {
+    commandLine "docker", "run", "--rm", "-it", "-p", "5432:5432", "--name", "opendoor-postgres-test", "-e", "POSTGRES_PASSWORD=mysecretpassword", "-d", "postgres:alpine"
+}
+
+task stopIntegrationDatabase(type: Exec) {
+    commandLine "docker", "rm", "-f", "opendoor-postgres-test"
+}
+
+test.dependsOn('startIntegrationDatabase')
+test.finalizedBy stopIntegrationDatabase
