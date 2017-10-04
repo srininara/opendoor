@@ -7,43 +7,58 @@
     <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
-  <body>
-    <div class="container" ng-app="openDoor">
-      <h2>Feedback Form</h2>
-      <form ng-submit="submit()" ng-controller="OpenDoorCtrl">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" ng-model="name" class="form-control" id="email" placeholder="Enter name" name="email">
+  <body ng-app="openDoor" ng-controller="OpenDoorCtrl">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <div class="logo navbar-brand"></div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="panel panel-default">
+        <div class="panel-heading">Feedback Form</div>
+        <div class="panel-body">
+          <form ng-submit="submit()">
+            <div>
+              <div class="form-group required">
+                <label>How are you feeling today?</label>
+              </div>
+              <div class="bliss">
+                <img src="icons/sad_2.svg" class="img-thumbnail" ng-click="setRating(1)" ng-class="{'selected': (rating == 1) }"/>
+                <img src="icons/sad_1.svg" class="img-thumbnail" ng-click="setRating(2)" ng-class="{'selected': (rating == 2) }"/>
+                <img src="icons/neutral.svg" class="img-thumbnail" ng-click="setRating(3)" ng-class="{'selected': (rating == 3) }"/>
+                <img src="icons/happy_2.svg" class="img-thumbnail" ng-click="setRating(4)" ng-class="{'selected': (rating == 4) }"/>
+                <img src="icons/happy_1.svg" class="img-thumbnail" ng-click="setRating(5)" ng-class="{'selected': (rating == 5) }"/>
+              </div>
+            </div>
+            <div class="form-group required">
+              <label for="feedback">Feedback</label>
+              <textarea rows="5" ng-model="feedback" ng-disabled="isSaving" class="form-control" id="feedback" placeholder="Enter feedback" name="feedback"></textarea>
+            </div>
+            <div class="form-group required">
+              <label for="location">Location</label>
+              <select class="form-control" ng-disabled="isSaving" id="location" name="location" ng-model="location">
+                <option ng-repeat="location in locations" value="{{location.id}}">{{location.name}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" ng-model="name" ng-disabled="isSaving" class="form-control" id="email" placeholder="Enter name" name="email">
+            </div>
+            <div class="submit-button">
+              <button type="submit" class="btn btn-default" ng-disabled="isFormNotValid() || isSaving">Submit</button>
+            </div>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="feedback">Feedback:</label>
-          <textarea rows="5" ng-model="feedback" class="form-control" id="feedback" placeholder="Enter feedback" name="feedback"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="location">Location:</label>
-          <select class="form-control" id="location" name="location" ng-model="location">
-            <option ng-repeat="location in locations" value="{{location.id}}">{{location.name}}</option>
-          </select>
-        </div>
-        <div class="form-group rate">
-          <input type="radio" id="star5" name="rate" ng-model="rating" value="5" />
-          <label for="star5" title="text">5 stars</label>
-          <input type="radio" id="star4" name="rate" ng-model="rating" value="4" />
-          <label for="star4" title="text">4 stars</label>
-          <input type="radio" id="star3" name="rate" ng-model="rating" value="3" />
-          <label for="star3" title="text">3 stars</label>
-          <input type="radio" id="star2" name="rate" ng-model="rating" value="2" />
-          <label for="star2" title="text">2 stars</label>
-          <input type="radio" id="star1" name="rate" ng-model="rating" value="1" />
-          <label for="star1" title="text">1 star</label>
-        </div>
-        <div class="submit-button">
-          <button type="submit" class="btn btn-default">Submit</button>
-        </div>
-      </form>
+      </div>
     </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted"></p>
+      </div>
+    </footer>
     <script type="text/javascript" src="vendor/js/angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="js/services/Location.js"></script>
+    <script type="text/javascript" src="js/services/Feedback.js"></script>
   </body>
 </html>
