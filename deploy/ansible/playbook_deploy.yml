@@ -2,6 +2,10 @@
   gather_facts: false
   become: yes
   tasks:
+    - name: fails if tag is not provided
+      fail: msg="tag is not defined"
+      when: tag is not defined
+
     - name: install python 2
       raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
 
@@ -51,10 +55,10 @@
     - name: deploy application
       docker_container:
         name: opendoor-application
-        image: jaswanth/opendoor:latest
+        image: jaswanth/opendoor:{{ tag }}
         state: started
         memory: 1g
-        pull: true
+        pull: "{{ tag == 'latest' }}"
         ports:
           - 8080:8080
         networks:

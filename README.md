@@ -6,4 +6,4 @@
 * To deploy:
     * Ansible `2.4.0.0` is required
     * `cd deploy/ansible`
-    * `ansible-playbook -i inventory/prod.ini playbook_deploy.yml -vv`
+    * `ansible-playbook -i inventory/prod.ini playbook_deploy.yml -e 'tag=<TAG>' -vv`
