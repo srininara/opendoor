@@ -6,6 +6,9 @@ import com.aconex.hackathon.opendoor.representation.FeedbackDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import static com.aconex.hackathon.opendoor.service.ObjectConverter.domain;
+import static com.aconex.hackathon.opendoor.service.ObjectConverter.dto;
+
 @Service
 public class FeedbackService {
     private final FeedbackRepository feedbackRepository;
@@ -16,7 +19,8 @@ public class FeedbackService {
     }
 
     public FeedbackDto save(FeedbackDto feedbackDto) {
-        Feedback feedback = feedbackRepository.save(new Feedback(feedbackDto.getMessage(), feedbackDto.getBliss(), feedbackDto.getRespondent()));
-        return new FeedbackDto(feedback.getMessage(), feedback.getId(), feedback.getBliss(), feedback.getRespondent());
+        Feedback feedback = feedbackRepository.save(domain(feedbackDto));
+        return dto(feedback);
     }
+
 }
