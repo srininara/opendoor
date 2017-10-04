@@ -33,3 +33,13 @@ dependencies {
 
     testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
 }
+
+task startApp(type: Exec, dependsOn: ["bootRepackage"]) {
+    workingDir ".."
+    commandLine 'docker-compose', '-f', 'docker-compose-local.yml', 'up', '--force-recreate'
+}
+
+task stopApp(type: Exec) {
+    workingDir ".."
+    commandLine 'docker-compose', '-f', 'docker-compose-local.yml', 'down', '--rmi', 'local'
+}
