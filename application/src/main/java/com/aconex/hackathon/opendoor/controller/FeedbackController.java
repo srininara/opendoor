@@ -1,8 +1,7 @@
 package com.aconex.hackathon.opendoor.controller;
 
-import com.aconex.hackathon.opendoor.model.Feedback;
-import com.aconex.hackathon.opendoor.repository.FeedbackRepository;
 import com.aconex.hackathon.opendoor.representation.FeedbackDto;
+import com.aconex.hackathon.opendoor.service.FeedbackService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +18,16 @@ public class FeedbackController {
 
     private static final Logger logger = LoggerFactory.getLogger(FeedbackController.class);
 
-    private FeedbackRepository feedbackRepository;
+    private FeedbackService feedbackService;
 
     @Autowired
-    public FeedbackController(FeedbackRepository feedbackRepository) {
-        this.feedbackRepository = feedbackRepository;
+    public FeedbackController(FeedbackService feedbackService) {
+        this.feedbackService = feedbackService;
     }
 
     @PostMapping(produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
-    public Feedback save(@RequestBody FeedbackDto feedbackDto) {
-        logger.info(feedbackDto.getMessage());
-        return feedbackRepository.save(new Feedback(feedbackDto.getMessage()));
+    public FeedbackDto save(@RequestBody FeedbackDto feedbackDto) {
+        logger.info(feedbackDto.toString());
+        return feedbackService.save(feedbackDto);
     }
 }
