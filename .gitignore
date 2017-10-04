@@ -8,3 +8,6 @@ node_modules
 .testpackage
 target
 *.db
+.vagrant
+*.log
+*.retry

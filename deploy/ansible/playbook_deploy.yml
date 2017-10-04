@@ -1,0 +1,63 @@
+- hosts: all
+  gather_facts: false
+  become: yes
+  tasks:
+    - name: install python 2
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
+    - name: install python setuptools
+      package: name=python-setuptools
+
+    - name: install pip
+      easy_install: name=pip
+
+    - name: install docker-py
+      pip: name=docker-py version=1.10.6
+
+    - name: set the stable repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+
+    - name: add repo key
+      shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+
+    - name: install docker
+      apt:
+        name: docker-ce
+        update_cache: yes
+        state: present
+
+    - name: create docker network
+      docker_network:
+        name: opendoor-network
+
+    - name: deploy database
+      docker_container:
+        name: opendoor-database
+        image: postgres:9.6.5-alpine
+        state: started
+        memory: 1g
+        volumes:
+          - /opt/opendoor/postgresql/data/:/var/lib/postgresql/data
+        ports:
+          - 5432:5432
+        networks:
+          - name: opendoor-network
+        env:
+          POSTGRES_USER: opendoor
+          POSTGRES_PASSWORD: opendoor
+          POSTGRES_DB: opendoor
+
+    - name: deploy application
+      docker_container:
+        name: opendoor-application
+        image: jaswanth/opendoor:latest
+        state: started
+        memory: 1g
+        pull: true
+        ports:
+          - 8080:8080
+        networks:
+          - name: opendoor-network
+        env:
+          OPENDOOR_DB: opendoor-database
