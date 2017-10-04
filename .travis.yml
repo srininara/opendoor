@@ -1,7 +1,13 @@
 sudo: required
 services:
   - docker
+
 language: java
 jdk:
   - oraclejdk8
+
+before_install:
+  - sudo service postgresql stop
+  - while sudo lsof -Pi :5432 -sTCP:LISTEN -t; do sleep 1; done
+
 script: "./gradlew clean build"
