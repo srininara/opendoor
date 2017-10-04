@@ -36,6 +36,8 @@ public class LocationController {
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     public List<LocationDto> getLocations() {
         List<Location> locations = locationRepository.findAll();
-        return locations.stream().map(location -> new LocationDto(location.getName())).collect(Collectors.toList());
+        return locations.stream().map(location ->
+                new LocationDto(location.getId(), location.getName()))
+                .collect(Collectors.toList());
     }
 }

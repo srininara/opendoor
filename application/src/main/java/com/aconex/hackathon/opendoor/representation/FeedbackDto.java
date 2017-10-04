@@ -1,6 +1,5 @@
 package com.aconex.hackathon.opendoor.representation;
 
-import com.aconex.hackathon.opendoor.model.Location;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import java.sql.Timestamp;
@@ -14,18 +13,18 @@ public class FeedbackDto {
     private String respondent;
     private Timestamp createdAt;
 
-    private String location;
+    private int locationId;
 
     public FeedbackDto() {
     }
 
-    public FeedbackDto(String message, UUID id, Integer bliss, String respondent, Timestamp createdAt, String location) {
+    public FeedbackDto(String message, UUID id, Integer bliss, String respondent, Timestamp createdAt, int locationId) {
         this.message = message;
         this.id = id;
         this.bliss = bliss;
         this.respondent = respondent;
         this.createdAt = createdAt;
-        this.location = location;
+        this.locationId = locationId;
     }
 
     public String getMessage() {
@@ -48,8 +47,8 @@ public class FeedbackDto {
         return createdAt;
     }
 
-    public String getLocation() {
-        return location;
+    public int getLocationId() {
+        return locationId;
     }
 
     @Override
@@ -60,7 +59,7 @@ public class FeedbackDto {
                 ", bliss=" + bliss +
                 ", respondent='" + respondent + '\'' +
                 ", createdAt=" + createdAt +
-                ", location='" + location + '\'' +
+                ", location='" + locationId + '\'' +
                 '}';
     }
 

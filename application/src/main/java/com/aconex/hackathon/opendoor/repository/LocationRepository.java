@@ -7,9 +7,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface LocationRepository extends CrudRepository<Location, String> {
+public interface LocationRepository extends CrudRepository<Location, Integer> {
 
     @Override
     List<Location> findAll();
+
+    @Override
+    Location findOne(Integer id);
 
 }

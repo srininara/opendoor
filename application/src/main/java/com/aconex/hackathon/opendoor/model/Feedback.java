@@ -22,7 +22,6 @@ public class Feedback {
     private Timestamp createdAt;
 
     @ManyToOne
-    @JoinColumn(name="location")
     private Location location;
 
     public Feedback() {
