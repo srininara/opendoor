@@ -10,4 +10,7 @@ before_install:
   - sudo service postgresql stop
   - while sudo lsof -Pi :5432 -sTCP:LISTEN -t; do sleep 1; done
 
-script: "./gradlew clean build"
+script: ./gradlew clean build
+
+after_success:
+  - ./gradlew buildDockerImage publishDockerImage

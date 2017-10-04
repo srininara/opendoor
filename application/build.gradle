@@ -54,3 +54,5 @@ task stopIntegrationDatabase(type: Exec) {
 
 test.dependsOn('startIntegrationDatabase')
 test.finalizedBy stopIntegrationDatabase
+
+apply from: "${rootDir}/build-support/docker_publish.gradle"

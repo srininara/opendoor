@@ -1,4 +1,4 @@
-FROM openjdk:8u141-jre-slim
+FROM openjdk:8u131-jre-alpine
 
 COPY build/libs/application*.jar /opt/opendoor/
 

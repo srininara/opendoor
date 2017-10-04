@@ -1,0 +1,30 @@
+ext {
+    gitSha = "git rev-parse --short HEAD".execute().text.trim()
+    user = "jaswanth"
+    repo = "$user/opendoor"
+}
+
+task buildLatestDockerImage(type: Exec, dependsOn: ["bootRepackage"]) {
+    workingDir "$rootDir/application"
+    commandLine "docker", "build", "-t", "$repo:latest", "."
+}
+
+task buildDockerImage(type: Exec, dependsOn: ["buildLatestDockerImage"]) {
+    workingDir "$rootDir/application"
+    commandLine "docker", "tag", "$repo:latest", "$repo:$gitSha"
+}
+
+task loginToDockerHub(type: Exec) {
+    workingDir "."
+    commandLine "docker", "login", "-u", "$user", "-p", "$System.env.PASSWORD"
+}
+
+task publishLatestDockerImage(type: Exec, dependsOn: ["loginToDockerHub"]) {
+    workingDir "${rootDir}/application"
+    commandLine "docker", "push", "$repo:latest"
+}
+
+task publishDockerImage(type: Exec, dependsOn: ["publishLatestDockerImage"]) {
+    workingDir "${rootDir}/application"
+    commandLine "docker", "push", "$repo:$gitSha"
+}
