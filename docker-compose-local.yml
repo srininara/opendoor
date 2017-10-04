@@ -13,7 +13,7 @@ services:
       - opendoor-database
 
   opendoor-database:
-    image: postgres:alpine
+    image: postgres:9.6.5-alpine
     ports:
       - 5432:5432
     environment:

@@ -45,7 +45,7 @@ task stopApp(type: Exec) {
 }
 
 task startIntegrationDatabase(type: Exec) {
-    commandLine "docker", "run", "--rm", "-it", "-p", "5432:5432", "--name", "opendoor-postgres-test", "-e", "POSTGRES_PASSWORD=mysecretpassword", "-d", "postgres:alpine"
+    commandLine "docker", "run", "--rm", "-it", "-p", "5432:5432", "--name", "opendoor-postgres-test", "-e", "POSTGRES_PASSWORD=mysecretpassword", "-d", "postgres:9.6.5-alpine"
 }
 
 task stopIntegrationDatabase(type: Exec) {
