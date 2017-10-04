@@ -12,13 +12,16 @@ public class Feedback {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    private int bliss;
+
     private String message;
 
     public Feedback() {
     }
 
-    public Feedback(String message) {
+    public Feedback(String message, int bliss) {
         this.message = message;
+        this.bliss = bliss;
     }
 
     public int getId() {
@@ -27,5 +30,9 @@ public class Feedback {
 
     public String getMessage() {
         return message;
+    }
+
+    public int getBliss() {
+        return bliss;
     }
 }
