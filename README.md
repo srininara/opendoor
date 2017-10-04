@@ -5,5 +5,5 @@
 * To stop the application: `./gradlew stopApp`
 * To deploy:
     * Ansible `2.4.0.0` is required
-    * `cd deploy/ansilbe`
+    * `cd deploy/ansible`
     * `ansible-playbook -i inventory/prod.ini playbook_deploy.yml -vv`
