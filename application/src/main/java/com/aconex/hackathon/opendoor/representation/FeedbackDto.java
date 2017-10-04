@@ -7,14 +7,16 @@ public class FeedbackDto {
     private String message;
     private Integer id;
     private Integer bliss;
+    private String respondent;
 
     public FeedbackDto() {
     }
 
-    public FeedbackDto(String message, Integer id, Integer bliss) {
+    public FeedbackDto(String message, Integer id, Integer bliss, String respondent) {
         this.message = message;
         this.id = id;
         this.bliss = bliss;
+        this.respondent = respondent;
     }
 
     public String getMessage() {
@@ -29,12 +31,17 @@ public class FeedbackDto {
         return bliss;
     }
 
+    public String getRespondent() {
+        return respondent;
+    }
+
     @Override
     public String toString() {
         return "FeedbackDto{" +
                 "message='" + message + '\'' +
                 ", id=" + id +
                 ", bliss=" + bliss +
+                ", respondent='" + respondent + '\'' +
                 '}';
     }
 }

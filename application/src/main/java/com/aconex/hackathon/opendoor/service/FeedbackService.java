@@ -16,7 +16,7 @@ public class FeedbackService {
     }
 
     public FeedbackDto save(FeedbackDto feedbackDto) {
-        Feedback feedback = feedbackRepository.save(new Feedback(feedbackDto.getMessage(), feedbackDto.getBliss()));
-        return new FeedbackDto(feedback.getMessage(), feedback.getId(), feedback.getBliss());
+        Feedback feedback = feedbackRepository.save(new Feedback(feedbackDto.getMessage(), feedbackDto.getBliss(), feedbackDto.getRespondent()));
+        return new FeedbackDto(feedback.getMessage(), feedback.getId(), feedback.getBliss(), feedback.getRespondent());
     }
 }
