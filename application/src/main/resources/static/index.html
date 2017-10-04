@@ -1,1 +1,49 @@
-<h1>HI</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OpenDoor</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <div class="container" ng-app="openDoor">
+      <h2>Feedback Form</h2>
+      <form ng-submit="submit()" ng-controller="OpenDoorCtrl">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" ng-model="name" class="form-control" id="email" placeholder="Enter name" name="email">
+        </div>
+        <div class="form-group">
+          <label for="feedback">Feedback:</label>
+          <textarea rows="5" ng-model="feedback" class="form-control" id="feedback" placeholder="Enter feedback" name="feedback"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <select class="form-control" id="location" name="location" ng-model="location">
+            <option ng-repeat="location in locations" value="{{location.id}}">{{location.name}}</option>
+          </select>
+        </div>
+        <div class="form-group rate">
+          <input type="radio" id="star5" name="rate" ng-model="rating" value="5" />
+          <label for="star5" title="text">5 stars</label>
+          <input type="radio" id="star4" name="rate" ng-model="rating" value="4" />
+          <label for="star4" title="text">4 stars</label>
+          <input type="radio" id="star3" name="rate" ng-model="rating" value="3" />
+          <label for="star3" title="text">3 stars</label>
+          <input type="radio" id="star2" name="rate" ng-model="rating" value="2" />
+          <label for="star2" title="text">2 stars</label>
+          <input type="radio" id="star1" name="rate" ng-model="rating" value="1" />
+          <label for="star1" title="text">1 star</label>
+        </div>
+        <div class="submit-button">
+          <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+      </form>
+    </div>
+    <script type="text/javascript" src="vendor/js/angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="js/services/Location.js"></script>
+  </body>
+</html>
