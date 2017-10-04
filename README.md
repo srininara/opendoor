@@ -1,6 +1,9 @@
-## Opendoor project!
+## Opendoor project! [![Build Status](https://travis-ci.org/aj-jaswanth/opendoor.svg?branch=master)](https://travis-ci.org/aj-jaswanth/opendoor)
 
-=> Start DB:
-`docker run -it -p 5432:5432 -v pgdata:/var/lib/postgresql/data --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres:alpine`
-=> To build the project :  `./gradlew clean build`
-=> To run the application: `./gradlew bootRun`
+* To build the project :  `./gradlew clean build`
+* To start the application: `./gradlew startApp`
+* To stop the application: `./gradlew stopApp`
+* To deploy:
+    * Ansible `2.4.0.0` is required
+    * `cd deploy/ansilbe`
+    * `ansible-playbook -i inventory/prod.ini playbook_deploy.yml -vv`
