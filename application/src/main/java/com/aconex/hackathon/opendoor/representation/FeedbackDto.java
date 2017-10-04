@@ -2,17 +2,19 @@ package com.aconex.hackathon.opendoor.representation;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+import java.util.UUID;
+
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class FeedbackDto {
     private String message;
-    private Integer id;
+    private UUID id;
     private Integer bliss;
     private String respondent;
 
     public FeedbackDto() {
     }
 
-    public FeedbackDto(String message, Integer id, Integer bliss, String respondent) {
+    public FeedbackDto(String message, UUID id, Integer bliss, String respondent) {
         this.message = message;
         this.id = id;
         this.bliss = bliss;
@@ -23,7 +25,7 @@ public class FeedbackDto {
         return message;
     }
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
