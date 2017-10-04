@@ -1,0 +1,22 @@
+version: "2.0"
+
+services:
+  opendoor-application:
+    build:
+      context: application
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      - OPENDOOR_DB=opendoor-database
+    depends_on:
+      - opendoor-database
+
+  opendoor-database:
+    image: postgres:alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=opendoor
+      - POSTGRES_PASSWORD=opendoor
+      - POSTGRES_DB=opendoor
