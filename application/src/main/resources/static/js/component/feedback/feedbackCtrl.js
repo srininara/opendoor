@@ -22,5 +22,11 @@
 			});
 			currentFeedback.rating.downvotes += 1;
 		};
+
+		ctrl.isMinimal = function() {
+			if (typeof ctrl.minimal !== 'undefined') return ctrl.minimal;
+
+			return false;
+		};
 	}]);
 })(this.angular);
