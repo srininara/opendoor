@@ -5,10 +5,10 @@ import com.aconex.hackathon.opendoor.service.FeedbackService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -30,5 +30,10 @@ public class FeedbackController {
     public FeedbackDto save(@RequestBody FeedbackDto feedbackDto) {
         logger.info(feedbackDto.toString());
         return feedbackService.save(feedbackDto);
+    }
+
+    @RequestMapping(method=RequestMethod.GET)
+    List<FeedbackDto> list(Pageable pageable){
+        return feedbackService.findAll(pageable);
     }
 }

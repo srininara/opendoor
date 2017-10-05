@@ -6,10 +6,14 @@ import com.aconex.hackathon.opendoor.representation.CategoryDto;
 import com.aconex.hackathon.opendoor.representation.FeedbackDto;
 import com.aconex.hackathon.opendoor.representation.LocationDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import static com.aconex.hackathon.opendoor.service.ObjectConverter.domain;
 import static com.aconex.hackathon.opendoor.service.ObjectConverter.dto;
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class FeedbackService {
@@ -29,6 +33,12 @@ public class FeedbackService {
         CategoryDto category = categoryService.getCategory(feedbackDto.getCategoryId());
         Feedback feedback = feedbackRepository.save(domain(feedbackDto, location, category));
         return dto(feedback);
+    }
+
+    public List<FeedbackDto> findAll(Pageable pageable) {
+        return feedbackRepository.findAll(pageable).getContent()
+                .stream()
+                .map(ObjectConverter::dto).collect(toList());
     }
 
 }
