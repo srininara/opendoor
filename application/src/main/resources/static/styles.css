@@ -92,7 +92,7 @@ a:hover {
   text-overflow: ellipsis;
 }
 
-.votes, .comments {
+.votes, .comments, .category, .location {
   text-align: center;
 }
 
@@ -126,3 +126,7 @@ a:hover {
   top: -5px;
   position: relative;
 }
+.location-label, .category-label {
+  font-size: 13px;
+}
+
