@@ -1,7 +1,8 @@
 (function(angular) {
-	angular.module('openDoor').factory('Comment', function($http) {
+	angular.module('openDoor').factory('Comment', function($http, $q) {
 
-		var save = function(data) {
+        var save = function(data) {
+            var deferred = $q.defer();
 			var feedbackId = data.feedbackId;
 			return $http({
 				method: 'POST',
@@ -12,7 +13,8 @@
 					'Accept': 'application/json'
 				}
 			}).then(function(response) {
-				return response.data;
+				deferred.resolve(response.data);
+				return deferred.promise;
 			});
 		};
 
