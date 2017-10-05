@@ -2,7 +2,6 @@ package com.aconex.hackathon.opendoor.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.sql.Timestamp;
 import java.util.UUID;
@@ -26,14 +25,17 @@ public class Feedback {
     @ManyToOne
     private Location location;
 
+    @ManyToOne
+    private Category category;
+
     public Feedback() {
     }
 
-    public Feedback(String title, String message, int bliss, Location location) {
-        this(title, message, bliss, location, null);
+    public Feedback(String title, String message, int bliss, Location location, Category category) {
+        this(title, message, bliss, location, category,null);
     }
 
-    public Feedback(String title, String message, int bliss, Location location, String respondent) {
+    public Feedback(String title, String message, int bliss, Location location, Category category, String respondent) {
         this.title = title;
         this.message = message;
         this.bliss = bliss;
@@ -41,6 +43,7 @@ public class Feedback {
         this.id = UUID.randomUUID();
         this.createdAt = new Timestamp(System.currentTimeMillis());
         this.location = location;
+        this.category = category;
     }
 
     public UUID getId() {
@@ -69,5 +72,9 @@ public class Feedback {
 
     public Location getLocation() {
         return location;
+    }
+
+    public Category getCategory() {
+        return category;
     }
 }

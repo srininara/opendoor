@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.aconex.hackathon.opendoor.service.ObjectConverter.dto;
+
 @Service
 public class CategoryService {
     private final CategoryRepository categoryRepository;
@@ -20,13 +22,13 @@ public class CategoryService {
 
     public List<CategoryDto> getCategories() {
         List<Category> categories = categoryRepository.findAll();
-        return categories.stream().map(category ->
-                new CategoryDto(category.getId(), category.getName(), category.getShortDescription(), category.getFullDescription()))
+        return categories.stream().map(ObjectConverter::dto)
                 .collect(Collectors.toList());
     }
 
-    public Category getCategory(int id) {
-        return categoryRepository.findOne(Integer.valueOf(id));
+    public CategoryDto getCategory(int id) {
+        Category category = categoryRepository.findOne(Integer.valueOf(id));
+        return dto(category);
     }
 
 }

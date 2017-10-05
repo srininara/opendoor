@@ -15,11 +15,12 @@ public class FeedbackDto {
     private Timestamp createdAt;
 
     private int locationId;
+    private int categoryId;
 
     public FeedbackDto() {
     }
 
-    public FeedbackDto(String title, String message, UUID id, Integer bliss, String respondent, Timestamp createdAt, int locationId) {
+    public FeedbackDto(String title, String message, UUID id, Integer bliss, String respondent, Timestamp createdAt, int locationId, int categoryId) {
         this.title = title;
         this.message = message;
         this.id = id;
@@ -27,6 +28,7 @@ public class FeedbackDto {
         this.respondent = respondent;
         this.createdAt = createdAt;
         this.locationId = locationId;
+        this.categoryId = categoryId;
     }
 
     public String getMessage() {
@@ -57,6 +59,10 @@ public class FeedbackDto {
         return locationId;
     }
 
+    public int getCategoryId() {
+        return categoryId;
+    }
+
     @Override
     public String toString() {
         return "FeedbackDto{" +
@@ -67,6 +73,9 @@ public class FeedbackDto {
                 ", respondent='" + respondent + '\'' +
                 ", createdAt=" + createdAt +
                 ", locationId=" + locationId +
+                ", locationId=" + locationId +
+                ", categoryId=" + categoryId +
                 '}';
     }
+
 }

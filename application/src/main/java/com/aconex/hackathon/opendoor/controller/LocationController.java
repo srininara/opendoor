@@ -1,6 +1,5 @@
 package com.aconex.hackathon.opendoor.controller;
 
-import com.aconex.hackathon.opendoor.model.Location;
 import com.aconex.hackathon.opendoor.representation.LocationDto;
 import com.aconex.hackathon.opendoor.service.LocationService;
 import org.slf4j.Logger;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -31,9 +29,6 @@ public class LocationController {
 
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     public List<LocationDto> getLocations() {
-        List<Location> locations = locationService.getLocations();
-        return locations.stream().map(location ->
-                new LocationDto(location.getId(), location.getName()))
-                .collect(Collectors.toList());
+        return locationService.getLocations();
     }
 }
