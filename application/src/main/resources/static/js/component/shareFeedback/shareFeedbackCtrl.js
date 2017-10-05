@@ -46,6 +46,7 @@
 			ctrl.isSaving = true;
 			Feedback.save(feedbackDetails).then(function() {
 				clearForm();
+				$location.path("/");
 			}).finally(function() {
 				ctrl.isSaving = false;
 			});
