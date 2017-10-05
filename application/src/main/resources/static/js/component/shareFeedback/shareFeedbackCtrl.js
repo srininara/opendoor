@@ -7,6 +7,7 @@
 		});
 
 		var clearForm = function() {
+			ctrl.title = '';
 			ctrl.name = '';
 			ctrl.feedback = '';
 			ctrl.rating = '';
@@ -22,7 +23,8 @@
 		};
 
 		ctrl.isFormNotValid = function() {
-			return ctrl.feedback.trim() === '' || ctrl.location.trim() === '' || ctrl.rating === '';
+			return ctrl.title.trim() === '' || ctrl.feedback.trim() === '' ||
+				ctrl.location.trim() === '' || ctrl.rating === '';
 		};
 
 		ctrl.submit = function() {
@@ -30,6 +32,7 @@
 				return false;
 			}
 			var feedbackDetails = {
+				title: ctrl.title,
 				respondent: ctrl.name,
 				message: ctrl.feedback,
 				locationId: ctrl.location,
