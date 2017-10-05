@@ -21,9 +21,16 @@
 			});
 		}
 
+        var getById = function(id) {
+            return $http.get('/feedback/'+id).then(function(response) {
+                return response.data;
+            });
+        }
+
 		return {
 			save: save,
-			getAll: getAll
+			getAll: getAll,
+			getById: getById
 		}
 
 	});

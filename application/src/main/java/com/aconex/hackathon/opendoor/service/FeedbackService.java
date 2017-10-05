@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 import static com.aconex.hackathon.opendoor.service.ObjectConverter.domain;
 import static com.aconex.hackathon.opendoor.service.ObjectConverter.dto;
@@ -40,6 +41,10 @@ public class FeedbackService {
         return feedbackRepository.findAll(pageable).getContent()
                 .stream()
                 .map(ObjectConverter::dto).collect(toList());
+    }
+
+    public FeedbackDto findById(UUID id){
+        return ObjectConverter.dto(feedbackRepository.findOne(id));
     }
 
 }

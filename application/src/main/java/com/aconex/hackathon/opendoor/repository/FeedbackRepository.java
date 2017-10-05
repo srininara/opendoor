@@ -11,6 +11,8 @@ import java.util.UUID;
 @Repository
 public interface FeedbackRepository extends PagingAndSortingRepository<Feedback, UUID> {
 
+    Feedback findOne(UUID id);
+
     Feedback save(Feedback feedback);
 
     Page<Feedback> findAll(Pageable pageable);

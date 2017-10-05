@@ -46,6 +46,11 @@ public class FeedbackController {
         return feedbackService.findAll(pageable);
     }
 
+    @GetMapping(path = "{feedbackId}", produces = APPLICATION_JSON_VALUE)
+    public FeedbackDto getFeedback(@PathVariable("feedbackId") UUID feedbackId) {
+        return feedbackService.findById(feedbackId);
+    }
+
     @PostMapping(path = "{feedbackId}/comments", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     public CommentDto addComment(@RequestBody CommentDto commentDto, @PathVariable("feedbackId") UUID feedbackId) {
         commentDto.setFeedbackId(feedbackId);
