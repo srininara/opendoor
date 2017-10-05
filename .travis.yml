@@ -21,7 +21,7 @@ install:
   - sudo chmod +x /usr/local/share/chromedriver
   - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 
-script: ./gradlew clean build
+script: ./gradlew clean build && ./gradlew runFt
 
 after_success:
   - ./gradlew buildDockerImage publishDockerImage
