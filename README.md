@@ -1,4 +1,4 @@
-## Opendoor project! [![Build Status](https://travis-ci.org/srininara/opendoor.svg?branch=master)](https://travis-ci.org/srininara/opendoor)
+### Opendoor project! [![Build Status](https://travis-ci.org/srininara/opendoor.svg?branch=master)](https://travis-ci.org/srininara/opendoor)
 
 * To build the project :  `./gradlew clean build`
 * To start the application: `./gradlew startApp`
