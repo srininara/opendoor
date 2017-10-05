@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 public class OpenDoorPage {
 
 //name
-    @FindBy(id = "email")
+    @FindBy(id = "name")
     private WebElement name;
     public WebElement name(){
         return name;
