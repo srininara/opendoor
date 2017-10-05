@@ -4,7 +4,7 @@
 		var save = function(data) {
 			return $http({
 				method: 'POST',
-				url: 'http://localhost:8080/feedback',
+				url: '/feedback',
 				data: data,
 				headers: {
 					'Content-Type': 'application/json',
