@@ -6,7 +6,7 @@ import com.aconex.hackathon.opendoor.representation.FeedbackDto;
 
 public final class ObjectConverter {
     public static Feedback domain(FeedbackDto feedbackDto, Location location) {
-        return new Feedback(feedbackDto.getMessage(),
+        return new Feedback(feedbackDto.getTitle(), feedbackDto.getMessage(),
                 feedbackDto.getBliss(),
                 location,
                 feedbackDto.getRespondent());
@@ -14,6 +14,7 @@ public final class ObjectConverter {
 
     public static FeedbackDto dto(Feedback feedback) {
         return new FeedbackDto(
+                feedback.getTitle(),
                 feedback.getMessage(),
                 feedback.getId(),
                 feedback.getBliss(),

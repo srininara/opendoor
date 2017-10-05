@@ -15,6 +15,8 @@ public class Feedback {
 
     private int bliss;
 
+    private String title;
+
     private String message;
 
     private String respondent;
@@ -27,11 +29,12 @@ public class Feedback {
     public Feedback() {
     }
 
-    public Feedback(String message, int bliss, Location location) {
-        this(message, bliss, location, null);
+    public Feedback(String title, String message, int bliss, Location location) {
+        this(title, message, bliss, location, null);
     }
 
-    public Feedback(String message, int bliss, Location location, String respondent) {
+    public Feedback(String title, String message, int bliss, Location location, String respondent) {
+        this.title = title;
         this.message = message;
         this.bliss = bliss;
         this.respondent = respondent;
@@ -42,6 +45,10 @@ public class Feedback {
 
     public UUID getId() {
         return id;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String getMessage() {

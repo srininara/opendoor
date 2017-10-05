@@ -7,6 +7,7 @@ import java.util.UUID;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class FeedbackDto {
+    private String title;
     private String message;
     private UUID id;
     private Integer bliss;
@@ -18,7 +19,8 @@ public class FeedbackDto {
     public FeedbackDto() {
     }
 
-    public FeedbackDto(String message, UUID id, Integer bliss, String respondent, Timestamp createdAt, int locationId) {
+    public FeedbackDto(String title, String message, UUID id, Integer bliss, String respondent, Timestamp createdAt, int locationId) {
+        this.title = title;
         this.message = message;
         this.id = id;
         this.bliss = bliss;
@@ -29,6 +31,10 @@ public class FeedbackDto {
 
     public String getMessage() {
         return message;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public UUID getId() {
@@ -54,14 +60,13 @@ public class FeedbackDto {
     @Override
     public String toString() {
         return "FeedbackDto{" +
-                "message='" + message + '\'' +
+                "title='" + title + '\'' +
+                ", message='" + message + '\'' +
                 ", id=" + id +
                 ", bliss=" + bliss +
                 ", respondent='" + respondent + '\'' +
                 ", createdAt=" + createdAt +
-                ", location='" + locationId + '\'' +
+                ", locationId=" + locationId +
                 '}';
     }
-
-
 }
