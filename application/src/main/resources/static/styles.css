@@ -96,7 +96,7 @@ a:hover {
   text-align: center;
 }
 
-.votes-label, .comments-label {
+.votes-label, .comments-label, .respondent-label {
   font-size: 10px;
   color: #848d95;
 }

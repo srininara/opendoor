@@ -1,5 +1,7 @@
 package com.aconex.hackathon.opendoor.model;
 
+import org.springframework.util.StringUtils;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,6 +11,8 @@ import java.util.UUID;
 
 @Entity
 public class Feedback {
+
+    private static final String ANONYMOUS = "Anonymous";
 
     @Id
     private UUID id;
@@ -39,7 +43,7 @@ public class Feedback {
         this.title = title;
         this.message = message;
         this.bliss = bliss;
-        this.respondent = respondent;
+        this.respondent = StringUtils.isEmpty(respondent)?ANONYMOUS:respondent;
         this.rating = rating;
         this.id = UUID.randomUUID();
         this.createdAt = new Timestamp(System.currentTimeMillis());
