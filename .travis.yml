@@ -15,4 +15,4 @@ script: ./gradlew clean build
 
 after_success:
   - ./gradlew buildDockerImage publishDockerImage
-  - cd deploy/ansible && ansible-playbook --vault-id ../../.travis/vault_pass.sh -i inventory/prod.ini playbook_deploy.yml -e 'tag=latest'
+  - cd deploy/ansible && ansible-playbook --vault-id ../../.travis/vault_pass.sh -i inventory/prod.ini playbook_deploy.yml -e 'tag=latest' -vv

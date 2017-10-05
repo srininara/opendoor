@@ -1,5 +1,6 @@
 - hosts: localhost
   gather_facts: false
+  become: yes
   tasks:
     - name: copy key
       copy:
@@ -14,6 +15,9 @@
   gather_facts: false
   become: yes
   tasks:
+    - name: list all keys
+      command: ssh-agent -l
+
     - name: fails if tag is not provided
       fail: msg="tag is not defined"
       when: tag is not defined
