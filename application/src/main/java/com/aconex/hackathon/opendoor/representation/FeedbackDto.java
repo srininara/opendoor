@@ -1,12 +1,15 @@
 package com.aconex.hackathon.opendoor.representation;
 
-import com.aconex.hackathon.opendoor.model.Rating;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.util.UUID;
 
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class FeedbackDto {
     private String title;
     private String message;
@@ -14,74 +17,8 @@ public class FeedbackDto {
     private Integer bliss;
     private String respondent;
     private Timestamp createdAt;
-    private Rating rating;
+    private RatingDto rating;
 
-    private int locationId;
-    private int categoryId;
-
-    public FeedbackDto() {
-    }
-
-    public FeedbackDto(String title, String message, UUID id, Integer bliss, String respondent, Timestamp createdAt, Rating rating, int locationId, int categoryId) {
-        this.title = title;
-        this.message = message;
-        this.id = id;
-        this.bliss = bliss;
-        this.respondent = respondent;
-        this.createdAt = createdAt;
-        this.rating = rating;
-        this.locationId = locationId;
-        this.categoryId = categoryId;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public Integer getBliss() {
-        return bliss;
-    }
-
-    public String getRespondent() {
-        return respondent;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public int getLocationId() {
-        return locationId;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    @Override
-    public String toString() {
-        return "FeedbackDto{" +
-                "title='" + title + '\'' +
-                ", message='" + message + '\'' +
-                ", id=" + id +
-                ", bliss=" + bliss +
-                ", respondent='" + respondent + '\'' +
-                ", createdAt=" + createdAt +
-                ", rating=" + rating +
-                ", locationId=" + locationId +
-                ", categoryId=" + categoryId +
-                '}';
-    }
-
-    public Rating getRating() {
-        return rating;
-    }
+    private LocationDto location;
+    private CategoryDto category;
 }

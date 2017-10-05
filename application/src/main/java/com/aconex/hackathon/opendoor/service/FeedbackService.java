@@ -5,6 +5,7 @@ import com.aconex.hackathon.opendoor.repository.FeedbackRepository;
 import com.aconex.hackathon.opendoor.representation.CategoryDto;
 import com.aconex.hackathon.opendoor.representation.FeedbackDto;
 import com.aconex.hackathon.opendoor.representation.LocationDto;
+import com.aconex.hackathon.opendoor.representation.RatingDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -29,9 +30,9 @@ public class FeedbackService {
     }
 
     public FeedbackDto save(FeedbackDto feedbackDto) {
-        LocationDto location = locationService.getLocation(feedbackDto.getLocationId());
-        CategoryDto category = categoryService.getCategory(feedbackDto.getCategoryId());
-        Feedback feedback = feedbackRepository.save(domain(feedbackDto, location, category));
+        LocationDto location = locationService.getLocation(feedbackDto.getLocation().getId());
+        CategoryDto category = categoryService.getCategory(feedbackDto.getCategory().getId());
+        Feedback feedback = feedbackRepository.save(domain(feedbackDto, location, category, new RatingDto()));
         return dto(feedback);
     }
 

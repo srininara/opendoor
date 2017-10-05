@@ -38,9 +38,13 @@
 				title: ctrl.title,
 				respondent: ctrl.name,
 				message: ctrl.feedback,
-				locationId: ctrl.location,
+				location: {
+					id: ctrl.location
+				},
 				bliss: ctrl.rating,
-				categoryId: categoryId
+				category: {
+					id: categoryId
+				}
 
 			};
 			ctrl.isSaving = true;

@@ -1,25 +1,30 @@
 package com.aconex.hackathon.opendoor.model;
 
 public class Rating {
-    private Integer upvotes;
-    private Integer downvotes;
+    private int upvotes;
+    private int downvotes;
 
     public Rating() {
     }
 
-    public Integer getUpvotes() {
+    public Rating(int upvotes, int downvotes) {
+        this.upvotes = upvotes;
+        this.downvotes = downvotes;
+    }
+
+    public int getUpvotes() {
         return upvotes;
     }
 
-    public Integer getDownvotes() {
+    public int getDownvotes() {
         return downvotes;
     }
 
-    public void incrementUpvotes(Integer count) {
+    public void incrementUpvotes(int count) {
         upvotes += count;
     }
 
-    public void incrementDownvotes(Integer count) {
+    public void incrementDownvotes(int count) {
         downvotes += count;
     }
 }

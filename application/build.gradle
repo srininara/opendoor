@@ -1,6 +1,7 @@
 buildscript {
     ext {
         springBootVersion = '1.5.7.RELEASE'
+        lombokVersion = '1.16.18'
     }
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
@@ -30,7 +31,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion") {
         exclude module: "spring-boot-starter-tomcat"
     }
-
+    compileOnly("org.projectlombok:lombok:$lombokVersion")
     testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
 }
 

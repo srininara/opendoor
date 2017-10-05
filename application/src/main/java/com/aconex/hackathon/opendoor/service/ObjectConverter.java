@@ -4,21 +4,23 @@ import com.aconex.hackathon.opendoor.model.Category;
 import com.aconex.hackathon.opendoor.model.Comment;
 import com.aconex.hackathon.opendoor.model.Feedback;
 import com.aconex.hackathon.opendoor.model.Location;
+import com.aconex.hackathon.opendoor.model.Rating;
 import com.aconex.hackathon.opendoor.representation.CategoryDto;
 import com.aconex.hackathon.opendoor.representation.CommentDto;
 import com.aconex.hackathon.opendoor.representation.FeedbackDto;
 import com.aconex.hackathon.opendoor.representation.LocationDto;
+import com.aconex.hackathon.opendoor.representation.RatingDto;
 
 import java.util.Optional;
 
 public final class ObjectConverter {
-    public static Feedback domain(FeedbackDto feedbackDto, LocationDto location, CategoryDto category) {
+    public static Feedback domain(FeedbackDto feedbackDto, LocationDto location, CategoryDto category, RatingDto rating) {
         return new Feedback(feedbackDto.getTitle()
                 ,feedbackDto.getMessage(),
                 Optional.ofNullable(feedbackDto.getBliss()).orElse(0),
                 domain(location),
                 domain(category),
-                feedbackDto.getRespondent(), feedbackDto.getRating());
+                feedbackDto.getRespondent(), domain(rating));
     }
 
     public static FeedbackDto dto(Feedback feedback) {
@@ -29,9 +31,9 @@ public final class ObjectConverter {
                 feedback.getBliss(),
                 feedback.getRespondent(),
                 feedback.getCreatedAt(),
-                feedback.getRating(),
-                feedback.getLocation().getId(),
-                feedback.getCategory().getId());
+                dto(feedback.getRating()),
+                dto(feedback.getLocation()),
+                dto(feedback.getCategory()));
     }
 
     public static CategoryDto dto(Category category) {
@@ -56,5 +58,13 @@ public final class ObjectConverter {
 
     public static Comment domain(CommentDto commentDto) {
         return new Comment(commentDto.getFeedbackId(), commentDto.getComment());
+    }
+
+    public static RatingDto dto(Rating rating) {
+        return new RatingDto(rating.getUpvotes(), rating.getDownvotes());
+    }
+
+    public static Rating domain(RatingDto rating) {
+        return new Rating(rating.getUpvotes(), rating.getDownvotes());
     }
 }
