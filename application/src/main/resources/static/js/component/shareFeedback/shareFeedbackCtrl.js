@@ -3,6 +3,7 @@
 		function(Location, Feedback, $location) {
 		var ctrl = this;
 		var categoryId = $location.search().category;
+		ctrl.categoryId = categoryId;
 
 		Location.get().then(function(locations) {
 			ctrl.locations = locations;
@@ -26,8 +27,13 @@
 		};
 
 		ctrl.isFormNotValid = function() {
-			return ctrl.title.trim() === '' || ctrl.feedback.trim() === '' ||
-				ctrl.location.trim() === '' || ctrl.rating === '';
+            var isTitleNFeedbackValid = ctrl.title.trim() === '' || ctrl.feedback.trim() === '';
+
+			if (categoryId !== '1') {
+				return isTitleNFeedbackValid || ctrl.rating === '';
+			}
+
+			return isTitleNFeedbackValid;
 		};
 
 		ctrl.submit = function() {
