@@ -43,8 +43,6 @@
         memory: 1g
         volumes:
           - /opt/opendoor/postgresql/data/:/var/lib/postgresql/data
-        ports:
-          - 5432:5432
         networks:
           - name: opendoor-network
         env:
