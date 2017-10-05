@@ -11,13 +11,13 @@
     - name: ssh add
       shell: eval $(ssh-agent) && ssh-add /tmp/hackathon-opendoor.pem
 
+    - name: list all keys
+      command: ssh-agent -l
+
 - hosts: all
   gather_facts: false
   become: yes
   tasks:
-    - name: list all keys
-      command: ssh-agent -l
-
     - name: fails if tag is not provided
       fail: msg="tag is not defined"
       when: tag is not defined
