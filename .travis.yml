@@ -9,8 +9,6 @@ jdk:
 before_install:
   - sudo service postgresql stop
   - while sudo lsof -Pi :5432 -sTCP:LISTEN -t; do sleep 1; done
-  - sudo apt-get -qq update
-  - sudo apt-get install -y python
 
 script: ./gradlew clean build
 
