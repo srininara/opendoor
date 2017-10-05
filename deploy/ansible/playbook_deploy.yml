@@ -9,7 +9,7 @@
         mode: 0600
 
     - name: ssh add
-      shell: eval $(ssh-agent) && ssh-add /tmp/hackathon-opendoor.pem
+      shell: eval "$(ssh-agent)" && ssh-add /tmp/hackathon-opendoor.pem
 
     - name: list all keys
       command: ssh-agent -l
