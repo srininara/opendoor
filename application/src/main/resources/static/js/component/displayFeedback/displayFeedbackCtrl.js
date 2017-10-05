@@ -6,9 +6,15 @@
             ctrl.feedback = feedback;
         });
 
+        ctrl.addComment = false;
+
         Comment.getAll(id).then(function (comments) {
             ctrl.comments = comments;
         });
+
+        ctrl.toggleAddComment = function() {
+            ctrl.addComment = !ctrl.addComment;
+        };
 
         var clearForm = function() {
             ctrl.comment = '';
@@ -35,6 +41,7 @@
                 ctrl.comments.push(data);
             }).finally(function() {
                 ctrl.isSaving = false;
+                ctrl.addComment = false;
             });
         };
 	}]);
