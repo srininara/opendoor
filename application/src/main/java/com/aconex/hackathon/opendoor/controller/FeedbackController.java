@@ -51,4 +51,10 @@ public class FeedbackController {
         commentDto.setFeedbackId(feedbackId);
         return commentService.save(commentDto);
     }
+
+    @GetMapping(path = "{feedbackId}/comments", produces = APPLICATION_JSON_VALUE)
+    List<CommentDto> feedbackComments(Pageable pageable, @PathVariable("feedbackId") UUID feedbackId) {
+        return commentService.comments(feedbackId, pageable);
+    }
+
 }
