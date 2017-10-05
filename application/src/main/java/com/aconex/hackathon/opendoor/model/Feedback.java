@@ -1,5 +1,6 @@
 package com.aconex.hackathon.opendoor.model;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -22,6 +23,9 @@ public class Feedback {
 
     private Timestamp createdAt;
 
+    @Embedded
+    private Rating rating;
+
     @ManyToOne
     private Location location;
 
@@ -31,15 +35,12 @@ public class Feedback {
     public Feedback() {
     }
 
-    public Feedback(String title, String message, int bliss, Location location, Category category) {
-        this(title, message, bliss, location, category,null);
-    }
-
-    public Feedback(String title, String message, int bliss, Location location, Category category, String respondent) {
+    public Feedback(String title, String message, int bliss, Location location, Category category, String respondent, Rating rating) {
         this.title = title;
         this.message = message;
         this.bliss = bliss;
         this.respondent = respondent;
+        this.rating = rating;
         this.id = UUID.randomUUID();
         this.createdAt = new Timestamp(System.currentTimeMillis());
         this.location = location;
@@ -76,5 +77,9 @@ public class Feedback {
 
     public Category getCategory() {
         return category;
+    }
+
+    public Rating getRating() {
+        return rating;
     }
 }

@@ -16,7 +16,7 @@ public final class ObjectConverter {
                 feedbackDto.getBliss(),
                 domain(location),
                 domain(category),
-                feedbackDto.getRespondent());
+                feedbackDto.getRespondent(), feedbackDto.getRating());
     }
 
     public static FeedbackDto dto(Feedback feedback) {
@@ -27,6 +27,7 @@ public final class ObjectConverter {
                 feedback.getBliss(),
                 feedback.getRespondent(),
                 feedback.getCreatedAt(),
+                feedback.getRating(),
                 feedback.getLocation().getId(),
                 feedback.getCategory().getId());
     }
