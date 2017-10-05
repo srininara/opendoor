@@ -32,3 +32,32 @@ body {
 .submit-button {
   float: right;
 }
+
+.share-feedback-container {
+  text-align: right;
+  padding: 8px 13px;
+}
+
+.view-feedback-container {
+  padding: 8px 13px 8px 0;
+  margin-bottom: 10px;
+}
+
+.share-feedback,
+.view-feedback {
+  color: #07c;
+  background-color: rgba(0,119,204,0);
+  border: 1px solid #0095ff;
+  padding: 8px 13px;
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+.share-feedback:hover,
+.view-feedback:hover {
+  color: #005999;
+  background-color: #e6f4ff;
+  border-color: #07c;
+  box-shadow: none;
+  text-decoration: none;
+}

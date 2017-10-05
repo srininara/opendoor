@@ -7,53 +7,14 @@
     <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
   </head>
-  <body ng-app="openDoor" ng-controller="OpenDoorCtrl">
+  <body ng-app="openDoor">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <div class="logo navbar-brand"></div>
       </div>
     </nav>
     <div class="container">
-      <div class="panel panel-default">
-        <div class="panel-heading">Feedback Form</div>
-        <div class="panel-body">
-          <form ng-submit="submit()">
-            <div>
-              <div class="form-group required">
-                <label>How are you feeling today?</label>
-              </div>
-              <div class="bliss">
-                <img src="icons/sad_2.svg" class="img-thumbnail" ng-click="setRating(1)" ng-class="{'selected': (rating == 1) }"/>
-                <img src="icons/sad_1.svg" class="img-thumbnail" ng-click="setRating(2)" ng-class="{'selected': (rating == 2) }"/>
-                <img src="icons/neutral.svg" class="img-thumbnail" ng-click="setRating(3)" ng-class="{'selected': (rating == 3) }"/>
-                <img src="icons/happy_2.svg" class="img-thumbnail" ng-click="setRating(4)" ng-class="{'selected': (rating == 4) }"/>
-                <img src="icons/happy_1.svg" class="img-thumbnail" ng-click="setRating(5)" ng-class="{'selected': (rating == 5) }"/>
-              </div>
-            </div>
-            <div class="form-group required">
-              <label for="title">Title</label>
-              <input type="text" rows="5" ng-model="title" ng-disabled="isSaving" class="form-control" id="title" placeholder="Enter title" name="title"/>
-            </div>
-            <div class="form-group required">
-              <label for="feedback">Feedback</label>
-              <textarea rows="5" ng-model="feedback" ng-disabled="isSaving" class="form-control" id="feedback" placeholder="Enter feedback" name="feedback"></textarea>
-            </div>
-            <div class="form-group required">
-              <label for="location">Location</label>
-              <select class="form-control" ng-disabled="isSaving" id="location" name="location" ng-model="location">
-                <option ng-repeat="location in locations" value="{{location.id}}">{{location.name}}</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" ng-model="name" ng-disabled="isSaving" class="form-control" id="email" placeholder="Enter name" name="email">
-            </div>
-            <div class="submit-button">
-              <button type="submit" class="btn btn-default" ng-disabled="isFormNotValid() || isSaving">Submit</button>
-            </div>
-          </form>
-        </div>
-      </div>
+      <div ng-view></div>
     </div>
     <footer class="footer">
       <div class="container">
@@ -61,8 +22,13 @@
       </div>
     </footer>
     <script type="text/javascript" src="vendor/js/angular.min.js"></script>
+    <script type="text/javascript" src="vendor/js/angular-route.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="js/services/Location.js"></script>
     <script type="text/javascript" src="js/services/Feedback.js"></script>
+    <script type="text/javascript" src="js/component/shareFeedback/shareFeedbackCtrl.js"></script>
+    <script type="text/javascript" src="js/component/shareFeedback/shareFeedback.js"></script>
+    <script type="text/javascript" src="js/component/feedbacks/feedbacksCtrl.js"></script>
+    <script type="text/javascript" src="js/component/feedbacks/feedbacks.js"></script>
   </body>
 </html>
