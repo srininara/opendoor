@@ -126,8 +126,11 @@ a:hover {
   top: -5px;
   position: relative;
 }
-.location-label, .category-label {
-  font-size: 13px;
+.category-label {
+  font-size: 12px;
+  color: #005999;
+  padding: 4px;
+  background-color: #E1ECF4;
 }
 
 .feedback-display-title {
