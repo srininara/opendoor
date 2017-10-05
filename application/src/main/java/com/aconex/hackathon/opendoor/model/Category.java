@@ -11,6 +11,8 @@ public class Category {
 
     private String name;
 
+    private String icon;
+
     private String shortDescription;
 
     private String fullDescription;
@@ -22,11 +24,16 @@ public class Category {
         this.id = id;
     }
 
-    public Category(int id, String name, String shortDescription, String fullDescription) {
+    public Category(int id, String name, String icon, String shortDescription, String fullDescription) {
         this.id = id;
         this.name = name;
+        this.icon = icon;
         this.shortDescription = shortDescription;
         this.fullDescription = fullDescription;
+    }
+
+    public String getIcon() {
+        return icon;
     }
 
     public int getId() {

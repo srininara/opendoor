@@ -37,11 +37,11 @@ public final class ObjectConverter {
     }
 
     public static CategoryDto dto(Category category) {
-        return new CategoryDto(category.getId(), category.getName(), category.getShortDescription(), category.getFullDescription());
+        return new CategoryDto(category.getId(), category.getName(), category.getIcon(), category.getShortDescription(), category.getFullDescription());
     }
 
     public static Category domain(CategoryDto categoryDto) {
-        return new Category(categoryDto.getId(), categoryDto.getName(), categoryDto.getShortDescription(), categoryDto.getFullDescription());
+        return new Category(categoryDto.getId(), categoryDto.getName(), categoryDto.getIcon(), categoryDto.getShortDescription(), categoryDto.getFullDescription());
     }
 
     public static LocationDto dto(Location location) {
