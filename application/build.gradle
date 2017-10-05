@@ -46,8 +46,10 @@ task stopApp(type: Exec) {
     commandLine 'docker-compose', '-f', 'docker-compose-local.yml', 'down', '--rmi', 'local'
 }
 
-task startIntegrationDatabase(type: Exec) {
-    commandLine "docker", "run", "--rm", "-it", "-p", "5432:5432", "--name", "opendoor-postgres-test", "-e", "POSTGRES_PASSWORD=mysecretpassword", "-d", "postgres:9.6.5-alpine"
+task startIntegrationDatabase(type: ExecWait) {
+    workingDir "$rootDir"
+    commandLine "docker", "run", "--rm", "-i", "-p", "5432:5432", "--name", "opendoor-postgres-test", "-e", "POSTGRES_PASSWORD=mysecretpassword", "postgres:9.6.5-alpine"
+    ready 'LOG:  database system is ready to accept connections'
 }
 
 task stopIntegrationDatabase(type: Exec) {
