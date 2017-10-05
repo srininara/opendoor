@@ -1,16 +1,34 @@
 (function(angular) {
-	angular.module('openDoor').controller('displayFeedbackCtrl', ['Feedback', 'Comment', '$location', function(Feedback, Comment, $location) {
-		var ctrl = this;
+    angular.module('openDoor').controller('displayFeedbackCtrl', ['Feedback', 'Comment', '$location', function(Feedback, Comment, $location) {
+        var ctrl = this;
         var id = $location.search().id;
-        Feedback.getById(id).then(function (feedback) {
+        Feedback.getById(id).then(function(feedback) {
             ctrl.feedback = feedback;
         });
 
         ctrl.addComment = false;
 
-        Comment.getAll(id).then(function (comments) {
+        Comment.getAll(id).then(function(comments) {
             ctrl.comments = comments;
         });
+
+        var vote = function(id, data) {
+            Feedback.vote(id, data);
+        };
+
+        ctrl.upVote = function(currentFeedback) {
+            vote(currentFeedback.id, {
+                upvotes: 1
+            });
+            currentFeedback.rating.upvotes += 1;
+        };
+
+        ctrl.downVote = function(currentFeedback) {
+            vote(currentFeedback.id, {
+                downvotes: 1
+            });
+            currentFeedback.rating.downvotes += 1;
+        };
 
         ctrl.toggleAddComment = function() {
             ctrl.addComment = !ctrl.addComment;
@@ -44,5 +62,5 @@
                 ctrl.addComment = false;
             });
         };
-	}]);
+    }]);
 })(this.angular);

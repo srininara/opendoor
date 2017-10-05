@@ -1,15 +1,27 @@
 <div class="feedback-display">
-	<div class="feedback-display-title">{{displayFeedback.feedback.title}}</div>
-	<div class="feedback-display-message">{{displayFeedback.feedback.message}}</div>
+	<div class="feedback-header">
+		<div class="feedback-display-title">{{ displayFeedback.feedback.title }}</div>
+		<div class="category-label">{{ displayFeedback.feedback.category.name }}</div>
+	</div>
+	<div class="feedback-details">
+		<div class="feedback-display-message">{{ displayFeedback.feedback.message }}</div>
+		<div class="respondent-label ng-binding">{{ displayFeedback.feedback.respondent }} - {{ displayFeedback.feedback.location.name }}</div>
+	</div>
+	<div class="feedback-vote">
+		<div class="vote votes-up-icon" ng-click="displayFeedback.upVote(displayFeedback.feedback)"></div>
+		<div class="vote votes-label">{{ displayFeedback.feedback.rating.upvotes }}</div>
+		<div class="vote votes-down-icon" ng-click="displayFeedback.downVote(displayFeedback.feedback)"></div>
+		<div class="vote votes-label">{{ displayFeedback.feedback.rating.downvotes }}</div>
+	</div>
 	<div class="comments-group">
 		<div class="comment-item" ng-repeat="c in displayFeedback.comments">
 			<div class="comment-content">{{c.comment}}</div>
 		</div>
 	</div>
 	<div class='comment-link' ng-click='displayFeedback.toggleAddComment()'>add a comment</div>
-	<form ng-submit="displayFeedback.submit()" ng-if='displayFeedback.addComment'>
+	<form ng-submit="displayFeedback.submit()" ng-if='displayFeedback.addComment' class='add-comment-section'>
 		<div class="form-group required">
-			<textarea rows="3" ng-model="displayFeedback.comment" ng-disabled="isSaving" class="form-control add-comment" id="comment" placeholder="Add Comment" name="comment"></textarea>
+			<textarea rows="3" focus-me="true" ng-model="displayFeedback.comment" ng-disabled="isSaving" class="form-control add-comment" id="comment" placeholder="Add Comment" name="comment"></textarea>
 		</div>
 		<div class="submit-button add-comment-button">
 			<button type="submit" class="btn btn-default" ng-disabled="displayFeedback.isFormNotValid() || displayFeedback.isSaving">Add Comment</button>

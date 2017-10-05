@@ -5,21 +5,17 @@
 			ctrl.feedback = feedback;
 		});
 
+		var vote = function(id, data) {
+			Feedback.vote(id, data);
+		};
+
 		ctrl.upVote = function(currentFeedback) {
-			Feedback.vote(currentFeedback.id, {
-				upvotes: 1
-			}).then(function(feedback) {
-				currentFeedback = feedback
-			});
+			vote(currentFeedback.id, {upvotes: 1} );
 			currentFeedback.rating.upvotes += 1;
 		};
 
 		ctrl.downVote = function(currentFeedback) {
-			Feedback.vote(currentFeedback.id, {
-				downvotes: 1
-			}).then(function(feedback) {
-				currentFeedback = feedback
-			});
+			vote(currentFeedback.id, { downvotes: 1 } );
 			currentFeedback.rating.downvotes += 1;
 		};
 
