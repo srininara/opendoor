@@ -1,6 +1,9 @@
 (function(angular) {
-	angular.module('openDoor').controller('shareFeedbackCtrl', ['Location', 'Feedback', function(Location, Feedback) {
+	angular.module('openDoor').controller('shareFeedbackCtrl', ['Location', 'Feedback', '$location',
+		function(Location, Feedback, $location) {
 		var ctrl = this;
+		var categoryId = $location.search().category;
+
 		Location.get().then(function(locations) {
 			ctrl.locations = locations;
 			ctrl.location = locations[0] && locations[0].id.toString();
@@ -36,7 +39,8 @@
 				respondent: ctrl.name,
 				message: ctrl.feedback,
 				locationId: ctrl.location,
-				bliss: ctrl.rating
+				bliss: ctrl.rating,
+				categoryId: categoryId
 
 			};
 			ctrl.isSaving = true;

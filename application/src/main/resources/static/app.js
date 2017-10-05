@@ -6,8 +6,8 @@
 			.when("/", {
 				template: "<feedbacks></feedbacks>"
 			})
-			.when("/shareFeedback", {
-				template: "<share-feedback></share-feedback>"
+			.when("/category", {
+				template: "<category></category>"
 			})
 	});
 })(this.angular);
