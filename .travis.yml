@@ -9,7 +9,7 @@ jdk:
 before_install:
   - sudo service postgresql stop
   - while sudo lsof -Pi :5432 -sTCP:LISTEN -t; do sleep 1; done
-  - pip install ansible==2.4.0.0
+  - sudo pip install ansible==2.4.0.0
 
 script: ./gradlew clean build
 
