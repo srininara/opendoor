@@ -11,6 +11,16 @@ before_install:
   - while sudo lsof -Pi :5432 -sTCP:LISTEN -t; do sleep 1; done
   - sudo pip install ansible==2.4.0.0
 
+addons:
+  chrome: stable
+install:
+  - wget -N http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip -P ~/
+  - unzip ~/chromedriver_linux64.zip -d ~/
+  - rm ~/chromedriver_linux64.zip
+  - sudo mv -f ~/chromedriver /usr/local/share/
+  - sudo chmod +x /usr/local/share/chromedriver
+  - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+
 script: ./gradlew clean build
 
 after_success:
