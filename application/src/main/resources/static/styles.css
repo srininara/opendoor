@@ -75,7 +75,7 @@ a:hover {
     border-bottom: 1px solid #e4e6e8;
 }
 
-.feedback-item {
+.feedback-item, .comment-item {
   padding: 8px 13px;
   border-bottom: 1px solid #e4e6e8;
 }
@@ -85,7 +85,7 @@ a:hover {
   font-weight: 500;
 }
 
-.feedback-message {
+.feedback-message, .comment-content {
   font-size: 12px;
   white-space: nowrap;
   overflow: hidden;
@@ -128,5 +128,14 @@ a:hover {
 }
 .location-label, .category-label {
   font-size: 13px;
+}
+
+.feedback-display-title {
+  font-size: 20px;
+  color: #122b40;
+}
+
+.feedback-display-message {
+  font-size: 15px;
 }
 
