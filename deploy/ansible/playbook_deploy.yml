@@ -72,3 +72,4 @@
           - name: opendoor-network
         env:
           OPENDOOR_DB: opendoor-database
+          JAVA_OPTS: -Dsentry_dsn={{ sentry_dsn }}
