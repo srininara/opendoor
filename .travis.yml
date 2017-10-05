@@ -9,8 +9,10 @@ jdk:
 before_install:
   - sudo service postgresql stop
   - while sudo lsof -Pi :5432 -sTCP:LISTEN -t; do sleep 1; done
+  - pip install ansible==2.4.0.0
 
 script: ./gradlew clean build
 
 after_success:
   - ./gradlew buildDockerImage publishDockerImage
+  - ansible-playbook --vault-id deploy/vault_pass.sh -i inventory/prod.ini playbook_deploy.yml -e 'tag=latest'

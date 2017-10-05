@@ -1,3 +1,15 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: copy key
+      copy:
+        src: hackathon-opendoor.pem
+        dest: /tmp/hackathon-opendoor.pem
+        mode: 0600
+
+    - name: ssh add
+      command: ssh-add /tmp/hackathon-opendoor.pem
+
 - hosts: all
   gather_facts: false
   become: yes
