@@ -101,3 +101,28 @@ a:hover {
   color: #848d95;
 }
 
+.votes-down-icon, .votes-up-icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 34px;
+  width: 34px;
+}
+
+.votes-down-icon {
+  background-image: url(icons/thumbs_down.svg);
+}
+
+.votes-up-icon {
+  background-image: url(icons/thumbs_up.svg);
+}
+
+.votes-label {
+  line-height: 30px;
+  text-align: left;
+  padding: 0;
+}
+
+.feedback {
+  top: -5px;
+  position: relative;
+}
