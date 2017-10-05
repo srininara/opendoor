@@ -12,5 +12,8 @@
 			.when("/shareFeedback", {
 				template: "<share-feedback></share-feedback>"
 			})
+            .when("/displayFeedback", {
+                template: "<display-feedback></display-feedback>"
+            })
 	});
 })(this.angular);
