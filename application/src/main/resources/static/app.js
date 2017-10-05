@@ -4,9 +4,6 @@
 	app.config(function($routeProvider) {
 		$routeProvider
 			.when("/", {
-				template: "<feedback></feedback>"
-			})
-			.when("/category", {
 				template: "<category></category>"
 			})
 			.when("/shareFeedback", {
