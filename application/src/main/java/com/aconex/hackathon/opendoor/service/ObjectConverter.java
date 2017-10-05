@@ -1,9 +1,11 @@
 package com.aconex.hackathon.opendoor.service;
 
 import com.aconex.hackathon.opendoor.model.Category;
+import com.aconex.hackathon.opendoor.model.Comment;
 import com.aconex.hackathon.opendoor.model.Feedback;
 import com.aconex.hackathon.opendoor.model.Location;
 import com.aconex.hackathon.opendoor.representation.CategoryDto;
+import com.aconex.hackathon.opendoor.representation.CommentDto;
 import com.aconex.hackathon.opendoor.representation.FeedbackDto;
 import com.aconex.hackathon.opendoor.representation.LocationDto;
 
@@ -43,5 +45,13 @@ public final class ObjectConverter {
 
     public static Location domain(LocationDto locationDto) {
         return new Location(locationDto.getId(), locationDto.getName());
+    }
+
+    public static CommentDto dto(Comment comment) {
+        return new CommentDto(comment.getFeedbackId(), comment.getCommentId(), comment.getComment());
+    }
+
+    public static Comment domain(CommentDto commentDto) {
+        return new Comment(commentDto.getFeedbackId(), commentDto.getComment());
     }
 }
