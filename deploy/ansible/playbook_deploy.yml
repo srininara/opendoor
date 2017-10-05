@@ -8,22 +8,16 @@
         dest: /tmp/hackathon-opendoor.pem
         mode: 0600
 
-    - name: ssh add
-      shell: eval "$(ssh-agent)" && ssh-add /tmp/hackathon-opendoor.pem
-
-    - name: list all keys
-      command: ssh-agent -l
-
 - hosts: all
   gather_facts: false
   become: yes
   tasks:
+    - name: install python 2
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
     - name: fails if tag is not provided
       fail: msg="tag is not defined"
       when: tag is not defined
-
-    - name: install python 2
-      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
 
     - name: install python setuptools
       package: name=python-setuptools
