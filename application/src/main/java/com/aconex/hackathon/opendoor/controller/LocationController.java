@@ -1,16 +1,12 @@
 package com.aconex.hackathon.opendoor.controller;
 
 import com.aconex.hackathon.opendoor.model.Location;
-import com.aconex.hackathon.opendoor.repository.LocationRepository;
-import com.aconex.hackathon.opendoor.representation.FeedbackDto;
 import com.aconex.hackathon.opendoor.representation.LocationDto;
-import com.aconex.hackathon.opendoor.service.FeedbackService;
+import com.aconex.hackathon.opendoor.service.LocationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,17 +21,17 @@ public class LocationController {
 
     private static final Logger logger = LoggerFactory.getLogger(LocationController.class);
 
-    private LocationRepository locationRepository;
+    private LocationService locationService;
 
     @Autowired
-    public LocationController(LocationRepository locationRepository) {
-        this.locationRepository = locationRepository;
+    public LocationController(LocationService locationService) {
+        this.locationService = locationService;
     }
 
 
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     public List<LocationDto> getLocations() {
-        List<Location> locations = locationRepository.findAll();
+        List<Location> locations = locationService.getLocations();
         return locations.stream().map(location ->
                 new LocationDto(location.getId(), location.getName()))
                 .collect(Collectors.toList());
