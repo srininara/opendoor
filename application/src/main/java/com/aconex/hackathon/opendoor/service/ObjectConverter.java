@@ -9,11 +9,13 @@ import com.aconex.hackathon.opendoor.representation.CommentDto;
 import com.aconex.hackathon.opendoor.representation.FeedbackDto;
 import com.aconex.hackathon.opendoor.representation.LocationDto;
 
+import java.util.Optional;
+
 public final class ObjectConverter {
     public static Feedback domain(FeedbackDto feedbackDto, LocationDto location, CategoryDto category) {
         return new Feedback(feedbackDto.getTitle()
                 ,feedbackDto.getMessage(),
-                feedbackDto.getBliss(),
+                Optional.ofNullable(feedbackDto.getBliss()).orElse(0),
                 domain(location),
                 domain(category),
                 feedbackDto.getRespondent(), feedbackDto.getRating());
