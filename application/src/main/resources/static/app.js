@@ -9,5 +9,8 @@
 			.when("/category", {
 				template: "<category></category>"
 			})
+			.when("/shareFeedback", {
+				template: "<share-feedback></share-feedback>"
+			})
 	});
 })(this.angular);
