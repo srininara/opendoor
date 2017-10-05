@@ -1,5 +1,5 @@
 <div class="col-xs-12 all-feedback">
-  <div class="col-xs-6"><h4 id="feedback">Top Feedback</h4></div>
+  <div class="col-xs-6"><h4 id="feedback">Feedback</h4></div>
   <div class="col-xs-6 share-feedback-container">
     <a href="#!category" class='share-feedback'>Share Feedback</a>
   </div>
@@ -8,9 +8,9 @@
 	<div class="feedback-item col-xs-12" ng-repeat="f in feedback.feedback">
 		<div class="col-xs-4 row votes">
 			<div class="col-xs-3 votes-up-icon" ng-click="feedback.upVote(f)"></div>
-			<div class="col-xs-3 votes-label">{{ f.upVote }}</div>
+			<div class="col-xs-3 votes-label">{{ f.rating.upvotes }}</div>
 			<div class="col-xs-3 votes-down-icon" ng-click="feedback.downVote(f)"></div>
-			<div class="col-xs-3 votes-label">{{ f.downVote }}</div>
+			<div class="col-xs-3 votes-label">{{ f.rating.downvotes }}</div>
 		</div>
 		<div class="col-xs-1 category">
 			<div class="category-label">{{ f.category.name}}</div>

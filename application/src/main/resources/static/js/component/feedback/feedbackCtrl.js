@@ -6,15 +6,21 @@
 		});
 
 		ctrl.upVote = function(currentFeedback) {
-			// TODO: Save the up vote
-			currentFeedback.upVote = currentFeedback.upVote || 0;
-			currentFeedback.upVote += 1;
+			Feedback.vote(currentFeedback.id, {
+				upvotes: 1
+			}).then(function(feedback) {
+				currentFeedback = feedback
+			});
+			currentFeedback.rating.upvotes += 1;
 		};
 
 		ctrl.downVote = function(currentFeedback) {
-			// TODO: Save the up vote
-			currentFeedback.downVote = currentFeedback.downVote || 0;
-			currentFeedback.downVote += 1;
+			Feedback.vote(currentFeedback.id, {
+				downvotes: 1
+			}).then(function(feedback) {
+				currentFeedback = feedback
+			});
+			currentFeedback.rating.downvotes += 1;
 		};
 	}]);
 })(this.angular);
