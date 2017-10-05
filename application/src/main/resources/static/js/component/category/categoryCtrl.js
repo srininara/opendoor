@@ -8,5 +8,11 @@
 		ctrl.getFeedbackUrl = function(id) {
 			return '#!shareFeedback?category=' + id;
 		}
+
+		ctrl.getStyle = function(key) {
+			if (key === 0) return "col-md-offset-3";
+
+			return "";
+		};
 	}]);
 })(this.angular);

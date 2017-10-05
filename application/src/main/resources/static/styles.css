@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Arvo');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 body {
   color: #333;
 }
@@ -142,3 +145,60 @@ a:hover {
   font-size: 15px;
 }
 
+.categories .category {
+  text-align: center;
+  padding: 20px 15px;
+}
+
+.categories {
+  margin-bottom: 20px;
+}
+
+.categories .link.Idea {
+  background-color: #fbbc05;
+}
+
+.categories .link.Rant {
+  background-color: #fd6554;
+}
+
+.categories .link.Applause {
+  background-color: #34a853;
+}
+
+.categories .icon {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 45px;
+}
+
+.categories .category.Idea {
+  background-image: url(https://d31kvrskfu54aq.cloudfront.net/web/uploads/2016/10/17124503/suggestion-box-icon1.png);
+}
+
+.categories .category.Applause {
+  background-image: url(https://d31kvrskfu54aq.cloudfront.net/web/uploads/2016/10/17124503/suggestion-box-icon1.png);
+}
+
+.categories .category.Rant {
+  background-image: url(https://d31kvrskfu54aq.cloudfront.net/web/uploads/2016/10/17124503/suggestion-box-icon1.png);
+}
+
+.categories .category .link {
+  display: block;
+  border: solid 1px #ccc;
+  padding: 40px 0;
+  font-family: 'Arvo', serif;
+  color: #e8e8e8;
+}
+
+.category-page h2 {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+.category-page .subtitle {
+  margin-top: 20px;
+  text-align: center;
+  color: #717171;
+  font-size: 14px;
+}

@@ -1,8 +1,21 @@
-<div class="view-feedback-container">
-	<a href="#!/" class='view-feedback'>Back</a>
-</div>
-<div class="col-xs-12">
-	<div class="col-xs-4" ng-repeat="c in category.categories"'>
-		<a ng-href="{{ category.getFeedbackUrl(c.id) }}">{{ c.name }}</a>
+<div class="category-page">
+	<h2>360° Feedback, 24/7</h2>
+	<div class="categories row col-md-10 col-md-offset-1">
+		<div class="col-xs-12 col-md-2 item category" ng-repeat="c in category.categories"' ng-class="category.getStyle($index)">
+			<a class="link" ng-class="c.name" ng-href="{{ category.getFeedbackUrl(c.id) }}">
+				<div class="{{ c.name }}">
+					<i class="icon material-icons">{{ c.icon }}</i>
+					<span>{{ c.name }}</span>
+				</div>
+			</a>
+		</div>
 	</div>
+	<div class="row">
+		<div class="col-md-12 subtitle">
+			OpenDoor is your opportunity to provide feedback 24/7. Send an idea, constructive feedback or positive recognition at any time and you can choose whether it's anonymous or not. It's all captured in real-time and helps us to build stronger teams, improve the workplace and ensure that everyone has a voice within Aconex.
+		</div>
+	</div>
+<div class="row">
+	<feedback />
+</div>
 </div>
