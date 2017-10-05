@@ -61,5 +61,9 @@
 				ctrl.isSaving = false;
 			});
 		};
+
+		ctrl.shouldShowForm = function () {
+            return ctrl.categoryId === '1' || ctrl.rating !== '';
+        };
 	}]);
 })(this.angular);

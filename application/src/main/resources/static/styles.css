@@ -206,3 +206,31 @@ a:hover {
   color: #717171;
   font-size: 14px;
 }
+
+.bliss {
+  display: flex;
+  justify-content: center;
+}
+
+.bliss .reaction {
+  margin: 0 15px;
+  cursor: pointer;
+}
+
+.bliss .reaction .material-icons {
+  font-size: 90px;
+}
+
+.reaction.very-dissatisfied:hover, .reaction.selected.very-dissatisfied {
+  color: #fd6554;
+}
+
+.reaction.sentiment-neutral:hover, .reaction.sentiment-neutral.selected {
+  color: #fbbc05;
+}
+
+.reaction.sentiment-very-satisfied:hover, .reaction.sentiment-very-satisfied.selected {
+  color: #34a853;
+}
+
+

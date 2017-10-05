@@ -7,33 +7,43 @@
           <label>How are you feeling today?</label>
         </div>
         <div class="bliss">
-          <img src="icons/sad_2.svg" class="img-thumbnail" ng-click="shareFeedback.setRating(1)" ng-class="{'selected': (shareFeedback.rating == 1) }"/>
-          <img src="icons/sad_1.svg" class="img-thumbnail" ng-click="shareFeedback.setRating(2)" ng-class="{'selected': (shareFeedback.rating == 2) }"/>
-          <img src="icons/neutral.svg" class="img-thumbnail" ng-click="shareFeedback.setRating(3)" ng-class="{'selected': (shareFeedback.rating == 3) }"/>
-          <img src="icons/happy_2.svg" class="img-thumbnail" ng-click="shareFeedback.setRating(4)" ng-class="{'selected': (shareFeedback.rating == 4) }"/>
-          <img src="icons/happy_1.svg" class="img-thumbnail" ng-click="shareFeedback.setRating(5)" ng-class="{'selected': (shareFeedback.rating == 5) }"/>
+          <div class="reaction very-dissatisfied" ng-click="shareFeedback.setRating(1)" ng-class="{'selected': (shareFeedback.rating == 1) }" style="
+">
+            <i class="material-icons" style="font-size: 90px;">sentiment_very_dissatisfied</i>
+          </div>
+          <div class="reaction sentiment-neutral" ng-click="shareFeedback.setRating(2)" ng-class="{'selected': (shareFeedback.rating == 2) }" style="
+">
+            <i class="material-icons" style="font-size: 90px;">sentiment_neutral</i>
+          </div>
+          <div class="reaction sentiment-very-satisfied" ng-click="shareFeedback.setRating(3)" ng-class="{'selected': (shareFeedback.rating == 3) }" style="
+">
+            <i class="material-icons" style="font-size: 90px;">sentiment_very_satisfied</i>
+          </div>
         </div>
       </div>
-      <div class="form-group required">
-        <label for="title">Title</label>
-        <input type="text" rows="5" ng-model="shareFeedback.title" ng-disabled="isSaving" class="form-control" id="title" placeholder="Enter title" name="title"/>
-      </div>
-      <div class="form-group required">
-        <label for="feedback">Feedback</label>
-        <textarea rows="5" ng-model="shareFeedback.feedback" ng-disabled="isSaving" class="form-control" id="feedback" placeholder="Enter feedback" name="feedback"></textarea>
-      </div>
-      <div class="form-group required">
-        <label for="location">Location</label>
-        <select class="form-control" ng-disabled="ishareFeedback.sSaving" id="location" name="location" ng-model="shareFeedback.location">
-          <option ng-repeat="location in shareFeedback.locations" value="{{location.id}}">{{location.name}}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" ng-model="shareFeedback.name" ng-disabled="shareFeedback.isSaving" class="form-control" id="name" placeholder="Enter name" name="name">
-      </div>
-      <div class="submit-button">
-        <button type="submit" class="btn btn-default" ng-disabled="shareFeedback.isFormNotValid() || shareFeedback.isSaving">Submit</button>
+      <div ng-if="shareFeedback.shouldShowForm()">
+        <div class="form-group required">
+          <label for="title">Title</label>
+          <input type="text" rows="5" ng-model="shareFeedback.title" ng-disabled="isSaving" class="form-control" id="title" placeholder="Enter title" name="title"/>
+        </div>
+        <div class="form-group required">
+          <label for="feedback">Feedback</label>
+          <textarea rows="5" ng-model="shareFeedback.feedback" ng-disabled="isSaving" class="form-control" id="feedback" placeholder="Enter feedback" name="feedback"></textarea>
+        </div>
+        <div class="form-group required">
+          <label for="location">Location</label>
+          <select class="form-control" ng-disabled="ishareFeedback.sSaving" id="location" name="location" ng-model="shareFeedback.location">
+            <option ng-repeat="location in shareFeedback.locations" value="{{location.id}}">{{location.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" ng-model="shareFeedback.name" ng-disabled="shareFeedback.isSaving" class="form-control" id="name" placeholder="Enter name" name="name">
+        </div>
+        <div class="submit-button">
+          <button type="submit" class="btn btn-default" ng-disabled="shareFeedback.isFormNotValid() || shareFeedback.isSaving">Submit</button>
+        </div>
+
       </div>
     </form>
   </div>
