@@ -31,6 +31,10 @@
               </div>
             </div>
             <div class="form-group required">
+              <label for="title">Title</label>
+              <input type="text" rows="5" ng-model="title" ng-disabled="isSaving" class="form-control" id="title" placeholder="Enter title" name="title"/>
+            </div>
+            <div class="form-group required">
               <label for="feedback">Feedback</label>
               <textarea rows="5" ng-model="feedback" ng-disabled="isSaving" class="form-control" id="feedback" placeholder="Enter feedback" name="feedback"></textarea>
             </div>

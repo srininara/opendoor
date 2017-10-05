@@ -8,6 +8,7 @@
 
 			var clearForm = function() {
 				$scope.name = '';
+				$scope.title = '';
 				$scope.feedback = '';
 				$scope.rating = '';
 				$scope.location = $scope.locations && $scope.locations[0] && $scope.locations[0].id.toString();
@@ -31,6 +32,7 @@
 				}
 				var feedbackDetails = {
 					respondent: $scope.name,
+					title: $scope.title,
 					message: $scope.feedback,
 					locationId: $scope.location,
 					bliss: $scope.rating
