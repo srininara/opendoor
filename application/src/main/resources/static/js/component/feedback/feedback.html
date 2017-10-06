@@ -15,16 +15,16 @@
 			<div class="col-xs-3 votes-down-icon" ng-click="feedback.downVote(f)"></div>
 			<div class="col-xs-3 votes-label">{{ f.rating.downvotes }}</div>
 		</div>
-		<div class="col-xs-1 comments">
-			<i class="material-icons">comment</i>
-			<div class="comments-count">{{f.discussionCount}}</div>
-		</div>
 		<div class="col-xs-6 feedback">
 			<div class="feedback-title">
 				<a href="#!displayFeedback?id={{f.id}}">{{ f.title }}</a>
 			</div>
 			<div class="feedback-message">{{ f.message }}</div>
 			<div class="respondent-label">By {{ f.respondent}} - {{ f.location.name}}</div>
+		</div>
+		<div class="col-xs-1 comments">
+			<i class="material-icons">comment</i>
+			<div class="comments-count">{{f.discussionCount}}</div>
 		</div>
 		<div class="col-xs-1 category">
 			<i class="icon material-icons reaction very-dissatisfied selected" ng-if="f.bliss == 1">sentiment_very_dissatisfied</i>
