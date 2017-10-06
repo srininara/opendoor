@@ -162,11 +162,19 @@ a:hover {
 }
 
 .votes-down-icon, .votes-up-icon {
-  /*background-repeat: no-repeat;*/
-  /*background-position: center;*/
-  /*height: 34px;*/
-  /*width: 34px;*/
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 34px;
+  width: 34px;
   cursor: pointer;
+}
+
+.votes-down-icon {
+  background-image: url(icons/thumbs_down.svg);
+}
+
+.votes-up-icon {
+  background-image: url(icons/thumbs_up.svg);
 }
 
 .votes-label {
@@ -177,7 +185,6 @@ a:hover {
 
 .feedback {
   top: -5px;
-  left: -15px;
   position: relative;
 }
 .category-label {
@@ -209,26 +216,15 @@ a:hover {
   margin-bottom: 20px;
 }
 
-.feedback-group .category {
-  margin-top: 0;
-  padding: 8px 0px;
-  width: 80%;
-  color: #e8e8e8;
-}
-
-.categories .link.Idea, .feedback-group .category.Idea {
+.categories .link.Idea {
   background-color: #fbbc05;
 }
 
-<<<<<<< HEAD
 .categories .link.Critique {
-=======
-.categories .link.Rant, .feedback-group .category.Rant {
->>>>>>> Feedback style changes
   background-color: #fd6554;
 }
 
-.categories .link.Applause, .feedback-group .category.Applause {
+.categories .link.Applause {
   background-color: #34a853;
 }
 
@@ -238,8 +234,16 @@ a:hover {
   font-size: 45px;
 }
 
-.feedback-group .categories .icon {
-  margin-bottom: 0;
+.categories .category.Idea {
+  background-image: url(https://d31kvrskfu54aq.cloudfront.net/web/uploads/2016/10/17124503/suggestion-box-icon1.png);
+}
+
+.categories .category.Applause {
+  background-image: url(https://d31kvrskfu54aq.cloudfront.net/web/uploads/2016/10/17124503/suggestion-box-icon1.png);
+}
+
+.categories .category.Critique {
+  background-image: url(https://d31kvrskfu54aq.cloudfront.net/web/uploads/2016/10/17124503/suggestion-box-icon1.png);
 }
 
 .categories .category .link {
@@ -302,33 +306,17 @@ a:hover {
   color: #3af;
 }
 
+.feedback-group .category {
+  margin-top: 12px;
+}
+
 .feedback-group .icon {
   font-size: 32px;
 }
 
 .feedback-group .feedback-row {
   text-align: center;
-}
-
-.thumbs-up-icon, .thumbs-down-icon {
-  padding-right: 8px;
-  font-size: 20px;
-}
-
-.thumbs-up-icon {
-  color: #34a853;
-}
-
-.thumbs-down-icon {
-  color: #fd6554;
-}
-
-.vote-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-.spinner {
+}.spinner {
   animation: rotator 1.4s linear infinite;
 }
 @keyframes rotator {
