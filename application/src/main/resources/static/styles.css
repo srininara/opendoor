@@ -161,6 +161,7 @@ a:hover {
   background-position: center;
   height: 34px;
   width: 34px;
+  cursor: pointer;
 }
 
 .votes-down-icon {
@@ -298,4 +299,12 @@ a:hover {
 
 .comment-link:hover {
   color: #3af;
+}
+
+.feedback-group .category {
+  margin-top: 12px;
+}
+
+.feedback-group .icon {
+  font-size: 32px;
 }

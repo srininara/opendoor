@@ -23,7 +23,9 @@
 			<div class="respondent-label">By {{ f.respondent}} - {{ f.location.name}}</div>
 		</div>
 		<div class="col-xs-1 category">
-			<div class="category-label">{{ f.category.name}}</div>
+			<i class="icon material-icons reaction very-dissatisfied selected" ng-if="f.bliss == 1">sentiment_very_dissatisfied</i>
+			<i class="icon material-icons reaction sentiment-neutral selected" ng-if="f.bliss == 2">sentiment_neutral</i>
+			<i class="icon material-icons reaction sentiment-very-satisfied selected" ng-if="f.bliss == 3">sentiment_very_satisfied</i>
 		</div>
 	</div>
 </div>
