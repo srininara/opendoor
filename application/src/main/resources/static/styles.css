@@ -169,11 +169,11 @@ a:hover {
   cursor: pointer;
 }
 
-.votes-down-icon {
+display-feedback .votes-down-icon {
   background-image: url(icons/thumbs_down.svg);
 }
 
-.votes-up-icon {
+display-feedback .votes-up-icon {
   background-image: url(icons/thumbs_up.svg);
 }
 
@@ -185,6 +185,7 @@ a:hover {
 
 .feedback {
   top: -5px;
+  left: -15px;
   position: relative;
 }
 .category-label {
@@ -216,15 +217,15 @@ a:hover {
   margin-bottom: 20px;
 }
 
-.categories .link.Idea {
+.categories .link.Idea, .feedback-group .category.Idea {
   background-color: #fbbc05;
 }
 
-.categories .link.Critique {
+.categories .link.Critique, .feedback-group .category.Critique {
   background-color: #fd6554;
 }
 
-.categories .link.Applause {
+.categories .link.Applause, .feedback-group .category.Applause {
   background-color: #34a853;
 }
 
@@ -232,18 +233,6 @@ a:hover {
   display: block;
   margin-bottom: 15px;
   font-size: 45px;
-}
-
-.categories .category.Idea {
-  background-image: url(https://d31kvrskfu54aq.cloudfront.net/web/uploads/2016/10/17124503/suggestion-box-icon1.png);
-}
-
-.categories .category.Applause {
-  background-image: url(https://d31kvrskfu54aq.cloudfront.net/web/uploads/2016/10/17124503/suggestion-box-icon1.png);
-}
-
-.categories .category.Critique {
-  background-image: url(https://d31kvrskfu54aq.cloudfront.net/web/uploads/2016/10/17124503/suggestion-box-icon1.png);
 }
 
 .categories .category .link {
@@ -306,9 +295,9 @@ a:hover {
   color: #3af;
 }
 
-.feedback-group .category {
-  margin-top: 12px;
-}
+.feedback-group .categories .icon {
+   margin-bottom: 0;
+ }
 
 .feedback-group .icon {
   font-size: 32px;
@@ -318,6 +307,29 @@ a:hover {
   text-align: center;
 }.spinner {
   animation: rotator 1.4s linear infinite;
+}
+
+.thumbs-up-icon, .thumbs-down-icon {
+  padding-right: 8px;
+  font-size: 20px;
+}
+
+.thumbs-up-icon {
+  color: #34a853;
+}
+
+.thumbs-down-icon {
+  color: #fd6554;
+}
+
+.vote-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.feedback-group .category {
+  color: #e8e8e8;
 }
 @keyframes rotator {
   0% {
