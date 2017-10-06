@@ -147,8 +147,13 @@ a:hover {
   text-align: center;
 }
 
-.votes-label, .comments-label, .respondent-label {
+.votes-label, .respondent-label {
   font-size: 10px;
+  color: #848d95;
+}
+
+.comments-count {
+  font-size: 15px;
   color: #848d95;
 }
 
