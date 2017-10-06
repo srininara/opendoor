@@ -7,18 +7,25 @@
 		<div class="feedback-display-message">{{ displayFeedback.feedback.message }}</div>
 		<div class="respondent-label ng-binding">By {{ displayFeedback.feedback.respondent }} - {{ displayFeedback.feedback.location.name }}</div>
 	</div>
-	<div class="feedback-vote">
-		<div class="vote votes-up-icon" ng-click="displayFeedback.upVote(displayFeedback.feedback)"></div>
-		<div class="vote votes-label">{{ displayFeedback.feedback.rating.upvotes }}</div>
-		<div class="vote votes-down-icon" ng-click="displayFeedback.downVote(displayFeedback.feedback)"></div>
-		<div class="vote votes-label">{{ displayFeedback.feedback.rating.downvotes }}</div>
+
+
+	<div class="feedback-vote votes feedback-group" style="float: right; display: flex; margin-top: 20px;">
+		<div class="col-xs-3 votes-up-icon vote-container col-xs-offset-6" style="margin-right: 15px" ng-click="displayFeedback.upVote(displayFeedback.feedback)">
+			<span class="glyphicon glyphicon-thumbs-up thumbs-up-icon" style="margin-right: 5px;"></span>
+			<div class="votes-label" style="top: 0">{{ displayFeedback.feedback.rating.upvotes  }}</div>
+		</div>
+		<div class="col-xs-3 votes-down-icon vote-container" ng-click="displayFeedback.downVote(displayFeedback.feedback)">
+			<span class="glyphicon glyphicon-thumbs-down thumbs-down-icon" style="margin-right: 5px;"></span>
+			<div class="col-xs-3 votes-label" style="top: 0">{{  displayFeedback.feedback.rating.downvotes }}</div>
+		</div>
 	</div>
+
 	<div class="comments-group">
 		<div class="comment-item" ng-repeat="c in displayFeedback.comments">
 			<div class="comment-content">{{c.comment}}</div>
 		</div>
 	</div>
-	<div class='comment-link' ng-click='displayFeedback.toggleAddComment()'>add a comment</div>
+	<div class='comment-link' ng-click='displayFeedback.toggleAddComment()' style="cursor: pointer;">add a comment</div>
 	<form ng-submit="displayFeedback.submit()" ng-if='displayFeedback.addComment' class='add-comment-section'>
 		<div class="form-group required">
 			<textarea rows="3" focus-me="true" ng-model="displayFeedback.comment" ng-disabled="isSaving" class="form-control add-comment" id="comment" placeholder="Add Comment" name="comment"></textarea>

@@ -26,13 +26,14 @@
 			<div class="respondent-label">By {{ f.respondent}} - {{ f.location.name}}</div>
 		</div>
 		<div class="col-xs-4 container votes">
-			<div class="col-xs-3 votes-up-icon vote-container col-xs-offset-6" ng-click="feedback.upVote(f)">
-			<span class="glyphicon glyphicon-thumbs-up thumbs-up-icon"></span>
-			<div class="votes-label">{{ f.rating.upvotes }}</div>
-		</div>
-		<div class="col-xs-3 votes-down-icon vote-container" ng-click="feedback.downVote(f)">
-			<span class="glyphicon glyphicon-thumbs-down thumbs-down-icon"></span>
-			<div class="col-xs-3 votes-label">{{ f.rating.downvotes }}</div>
+            <div class="col-xs-3 votes-up-icon vote-container col-xs-offset-6" ng-click="feedback.upVote(f)">
+ 	           <span class="glyphicon glyphicon-thumbs-up thumbs-up-icon"></span>
+            	<div class="votes-label">{{ f.rating.upvotes }}</div>
+        	</div>
+			<div class="col-xs-3 votes-down-icon vote-container" ng-click="feedback.downVote(f)">
+				<span class="glyphicon glyphicon-thumbs-down thumbs-down-icon"></span>
+				<div class="col-xs-3 votes-label">{{ f.rating.downvotes }}</div>
+			</div>
 		</div>
 	</div>
 	<div class="row">

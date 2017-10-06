@@ -115,7 +115,7 @@ a:hover {
 }
 
 .feedback-details {
-  width: calc(100% - 100px);
+  width: calc(100% - 132px);
 }
 
 .feedback-vote .vote {
@@ -169,13 +169,13 @@ a:hover {
   cursor: pointer;
 }
 
-display-feedback .votes-down-icon {
-  background-image: url(icons/thumbs_down.svg);
-}
+/*display-feedback .votes-down-icon {*/
+  /*background-image: url(icons/thumbs_down.svg);*/
+/*}*/
 
-display-feedback .votes-up-icon {
-  background-image: url(icons/thumbs_up.svg);
-}
+/*display-feedback .votes-up-icon {*/
+  /*background-image: url(icons/thumbs_up.svg);*/
+/*}*/
 
 .votes-label {
   line-height: 30px;
