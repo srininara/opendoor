@@ -15,12 +15,21 @@ import java.util.Optional;
 
 public final class ObjectConverter {
     public static Feedback domain(FeedbackDto feedbackDto, LocationDto location, CategoryDto category, RatingDto rating) {
-        return new Feedback(feedbackDto.getTitle()
-                ,feedbackDto.getMessage(),
-                Optional.ofNullable(feedbackDto.getBliss()).orElse(0),
-                domain(location),
-                domain(category),
-                feedbackDto.getRespondent(), domain(rating));
+        if(feedbackDto.getId() != null) {
+            return new Feedback(feedbackDto.getId(), feedbackDto.getTitle()
+                    , feedbackDto.getMessage(),
+                    Optional.ofNullable(feedbackDto.getBliss()).orElse(0),
+                    domain(location),
+                    domain(category),
+                    feedbackDto.getRespondent(), domain(rating), feedbackDto.getDiscussionCount());
+        } else {
+            return new Feedback(feedbackDto.getTitle()
+                    , feedbackDto.getMessage(),
+                    Optional.ofNullable(feedbackDto.getBliss()).orElse(0),
+                    domain(location),
+                    domain(category),
+                    feedbackDto.getRespondent(), domain(rating), feedbackDto.getDiscussionCount());
+        }
     }
 
     public static FeedbackDto dto(Feedback feedback) {
@@ -33,7 +42,8 @@ public final class ObjectConverter {
                 feedback.getCreatedAt(),
                 dto(feedback.getRating()),
                 dto(feedback.getLocation()),
-                dto(feedback.getCategory()));
+                dto(feedback.getCategory()),
+                feedback.getDiscussionCount());
     }
 
     public static CategoryDto dto(Category category) {

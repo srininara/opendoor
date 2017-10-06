@@ -21,4 +21,5 @@ public class FeedbackDto {
 
     private LocationDto location;
     private CategoryDto category;
+    private int discussionCount;
 }

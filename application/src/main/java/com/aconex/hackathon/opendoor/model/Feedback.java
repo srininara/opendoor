@@ -36,19 +36,26 @@ public class Feedback {
     @ManyToOne
     private Category category;
 
+    private int discussionCount;
+
     public Feedback() {
     }
 
-    public Feedback(String title, String message, int bliss, Location location, Category category, String respondent, Rating rating) {
+    public Feedback(UUID id, String title, String message, int bliss, Location location, Category category, String respondent, Rating rating, int discussionCount) {
+        this.id = id;
         this.title = title;
         this.message = message;
         this.bliss = bliss;
         this.respondent = StringUtils.isEmpty(respondent)?ANONYMOUS:respondent;
         this.rating = rating;
-        this.id = UUID.randomUUID();
         this.createdAt = new Timestamp(System.currentTimeMillis());
         this.location = location;
         this.category = category;
+        this.discussionCount = discussionCount;
+    }
+
+    public Feedback(String title, String message, int bliss, Location location, Category category, String respondent, Rating rating, int discussionCount) {
+        this(UUID.randomUUID(), title, message, bliss, location, category, respondent, rating, discussionCount);
     }
 
     public UUID getId() {
@@ -85,5 +92,9 @@ public class Feedback {
 
     public Rating getRating() {
         return rating;
+    }
+
+    public int getDiscussionCount() {
+        return discussionCount;
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,6 +19,7 @@ import static com.aconex.hackathon.opendoor.service.ObjectConverter.dto;
 import static java.util.stream.Collectors.toList;
 
 @Service
+@Transactional
 public class FeedbackService {
     private final FeedbackRepository feedbackRepository;
     private final LocationService locationService;
