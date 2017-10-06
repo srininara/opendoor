@@ -308,3 +308,7 @@ a:hover {
 .feedback-group .icon {
   font-size: 32px;
 }
+
+.feedback-group .feedback-row {
+  text-align: center;
+}

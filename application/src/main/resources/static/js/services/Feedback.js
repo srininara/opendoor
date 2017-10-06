@@ -15,8 +15,13 @@
 			});
 		};
 
-		var getAll = function() {
-			return $http.get('/feedback').then(function(response) {
+		var getAll = function(page, pageSize) {
+			return $http.get('/feedback', {
+				params: {
+                    page: page,
+                    size: pageSize,
+				}
+			}).then(function(response) {
 				return response.data;
 			});
 		}

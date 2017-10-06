@@ -28,4 +28,9 @@
 			<i class="icon material-icons reaction sentiment-very-satisfied selected" ng-if="f.bliss == 3">sentiment_very_satisfied</i>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4 feedback-row" ng-if="feedback.hasMorePagesLeft">
+			<button class="btn btn-default" ng-click="feedback.loadMore()">Load more...</button>
+		</div>
+	</div>
 </div>

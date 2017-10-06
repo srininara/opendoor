@@ -1,9 +1,23 @@
 (function(angular) {
 	angular.module('openDoor').controller('feedbackCtrl', ['Feedback', function(Feedback) {
 		var ctrl = this;
-		Feedback.getAll().then(function(feedback) {
-			ctrl.feedback = feedback;
-		});
+		var page = 0;
+		var pageSize = 10;
+
+		ctrl.feedback = [];
+		ctrl.hasMorePagesLeft = false;
+
+		var getFeedbacks = function() {
+            Feedback.getAll(page, pageSize).then(function(feedback) {
+                if (feedback && feedback.length) {
+                    ctrl.feedback.push.apply(ctrl.feedback, feedback);
+                    ctrl.hasMorePagesLeft = feedback.length === pageSize;
+                    return;
+                }
+
+                ctrl.hasMorePagesLeft = false;
+            });
+		};
 
 		var vote = function(id, data) {
 			Feedback.vote(id, data);
@@ -23,6 +37,15 @@
 			if (typeof ctrl.minimal !== 'undefined') return ctrl.minimal;
 
 			return false;
+		};
+
+		ctrl.$onInit = function () {
+            getFeedbacks();
+		};
+
+		ctrl.loadMore = function() {
+			page++;
+            getFeedbacks();
 		};
 	}]);
 })(this.angular);
