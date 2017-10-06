@@ -1,0 +1,1 @@
+insert into location values (0, 'Anonymous');

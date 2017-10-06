@@ -6,7 +6,9 @@
 		ctrl.categoryId = categoryId;
 
 		Location.get().then(function(locations) {
-			ctrl.locations = locations;
+			ctrl.locations = locations.sort(function(l1, l2) {
+			    return l1.id - l2.id;
+			});
 			ctrl.location = locations[0] && locations[0].id.toString();
 		});
 
