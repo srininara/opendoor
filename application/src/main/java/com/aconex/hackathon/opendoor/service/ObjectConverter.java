@@ -53,7 +53,7 @@ public final class ObjectConverter {
     }
 
     public static CommentDto dto(Comment comment) {
-        return new CommentDto(comment.getFeedbackId(), comment.getCommentId(), comment.getComment());
+        return new CommentDto(comment.getFeedbackId(), comment.getCommentId(), comment.getComment(), comment.getCreatedAt());
     }
 
     public static Comment domain(CommentDto commentDto) {
